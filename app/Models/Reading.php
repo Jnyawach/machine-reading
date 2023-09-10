@@ -19,6 +19,7 @@ class Reading extends Model
         'confirmed_at',
         'shift_id',
         'confirm_status',
+        'machine_id'
 
     ];
 
@@ -33,6 +34,10 @@ class Reading extends Model
     }
     public function shift(){
         return $this->belongsTo(Shift::class);
+    }
+
+    public function machine(){
+        return $this->belongsTo(Machine::class);
     }
 
 }

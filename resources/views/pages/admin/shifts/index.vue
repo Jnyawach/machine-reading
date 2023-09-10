@@ -29,7 +29,7 @@ watch([search,showing],()=>{
         search: search.value,
         showing: showing.value,
     },{preserveScroll:true,preserveState:true}))
-},)
+})
 
 const deleteShift=(id:number)=>{
     router.delete(route('shifts.destroy',id))
@@ -129,7 +129,7 @@ const deleteShift=(id:number)=>{
                             </td>
                             <td class="px-2 py-3">
                                 <prompt-alert
-                                    title="Are you sure you want to delete this machine?"
+                                    title="Are you sure you want to delete this shift?"
                                     description="All related data will be deleted"
                                     @proceed="deleteShift(shift.id)"
                                 >

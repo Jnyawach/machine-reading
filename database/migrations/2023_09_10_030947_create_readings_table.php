@@ -19,9 +19,10 @@ return new class extends Migration
             $table->unsignedBigInteger('shift_id')->index();
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('confirm_by_id')->nullable();
-            $table->unsignedBigInteger('reading_entry');
-            $table->unsignedBigInteger('automatic_count');
-            $table->unsignedBigInteger('reading_count');
+            $table->integer('reading_entry');
+            $table->decimal('automatic_count',10,2);
+            $table->decimal('reading_count',10,2);
+            $table->unsignedBigInteger('machine_id');
             $table->string('confirm_status')->default(\App\Enums\ConfirmStatusEnum::Pending->value);
             $table->timestamp('confirmed_at')->nullable();
             $table->foreign('product_id')->references('id')
@@ -32,6 +33,8 @@ return new class extends Migration
             ->on('users')->cascadeOnDelete();
             $table->foreign('confirm_by_id')->references('id')
                 ->on('users')->cascadeOnDelete();
+            $table->foreign('machine_id')->references('id')
+                ->on('machines')->cascadeOnDelete();
         });
     }
 

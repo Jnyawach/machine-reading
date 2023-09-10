@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Interfaces\MachineInterface;
 use App\Interfaces\ProductInterface;
+use App\Interfaces\ReadingInterface;
 use App\Interfaces\ShiftInterface;
 use App\Repositories\MachineRepository;
 use App\Interfaces\UserInterface;
+use App\Repositories\ReadingRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\ShiftRepository;
@@ -25,6 +27,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(MachineInterface::class,MachineRepository::class);
         $this->app->bind(ShiftInterface::class,ShiftRepository::class);
         $this->app->bind(ProductInterface::class,ProductRepository::class);
+        $this->app->bind(ReadingInterface::class,ReadingRepository::class);
     }
 
     /**

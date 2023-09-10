@@ -25,4 +25,8 @@ class Machine extends Model
         ];
     }
     protected $fillable=['name','status'];
+
+    public function readings(){
+        return $this->hasMany(Reading::class);
+    }
 }

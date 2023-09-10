@@ -80,7 +80,7 @@ const logout=()=>{
             </div>
             <ul class="space-y-2 font-medium pt-3 min-h-[45vh] border-b border-gray-300 text-sm">
                 <li>
-                    <Link href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group">
+                    <Link :href="route('admin.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group">
                         <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                             <path d="M488 392H251.9C241.7 359.6 211.8 336 176 336s-65.69 23.62-75.93 56H24C10.75 392 0 402.7 0 416s10.75 24 24 24h76.07C110.3 472.4 140.2 496 176 496s65.69-23.62 75.93-56H488c13.25 0 24-10.75 24-24S501.3 392 488 392zM176 448c-17.64 0-32-14.36-32-32s14.36-32 32-32s32 14.36 32 32S193.6 448 176 448zM488 232h-76.07C401.7 199.6 371.8 176 336 176s-65.69 23.62-75.93 56H24C10.75 232 0 242.7 0 256s10.75 24 24 24h236.1C270.3 312.4 300.2 336 336 336s65.69-23.62 75.93-56H488C501.3 280 512 269.3 512 256S501.3 232 488 232zM336 288c-17.64 0-32-14.36-32-32s14.36-32 32-32s32 14.36 32 32S353.6 288 336 288zM24 120h108.1C142.3 152.4 172.2 176 208 176s65.69-23.62 75.93-56H488C501.3 120 512 109.3 512 96s-10.75-24-24-24h-204.1C273.7 39.62 243.8 16 208 16S142.3 39.62 132.1 72H24C10.75 72 0 82.75 0 96S10.75 120 24 120zM208 64c17.64 0 32 14.36 32 32s-14.36 32-32 32s-32-14.36-32-32S190.4 64 208 64z"/>
                         </svg>
@@ -112,7 +112,7 @@ const logout=()=>{
                     </Link>
                 </li>
                 <li>
-                    <Link href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group">
+                    <Link :href="route('readings.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group">
 
                         <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                             <path d="M80 256v64c0 17.67 14.33 32 32 32h160c17.67 0 32-14.33 32-32V256c0-17.67-14.33-32-32-32h-160C94.33 224 80 238.3 80 256zM365.3 93.38l-74.63-74.64C278.6 6.742 262.3 0 245.4 0H64C28.65 0 0 28.65 0 64l.0065 384c0 35.34 28.65 64 64 64H320c35.2 0 64-28.8 64-64V138.6C384 121.7 377.3 105.4 365.3 93.38zM336 448c0 8.836-7.164 16-16 16H64.02c-8.838 0-16-7.164-16-16L48 64.13c0-8.836 7.164-16 16-16h160L224 128c0 17.67 14.33 32 32 32h79.1V448zM96 128h80C184.8 128 192 120.8 192 112S184.8 96 176 96H96C87.16 96 80 103.2 80 112S87.16 128 96 128zM96 192h80C184.8 192 192 184.8 192 176S184.8 160 176 160H96C87.16 160 80 167.2 80 176S87.16 192 96 192zM288 384h-80c-8.844 0-16 7.156-16 16s7.156 16 16 16H288c8.844 0 16-7.156 16-16S296.8 384 288 384z"/>
@@ -162,7 +162,7 @@ const logout=()=>{
         </div>
     </aside>
 
-    <div class="p-4 sm:ml-64">
+    <div class="p-4 sm:ml-64 bg-gray-50">
         <div class="hidden sm:block">
             <div class="flex justify-between">
                 <div class="flex gap-3 items-center">

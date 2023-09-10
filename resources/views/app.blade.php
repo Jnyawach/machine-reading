@@ -7,7 +7,7 @@
         @routes
         @inertiaHead
     </head>
-    <body class="font-poppins bg-gray-50">
+    <body class="font-poppins bg-gray-50 text-sm">
       @inertia
     </body>
 </html>
