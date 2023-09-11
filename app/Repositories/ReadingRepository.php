@@ -8,6 +8,7 @@ use App\Interfaces\ReadingInterface;
 use App\Models\Product;
 use App\Models\Reading;
 use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\Auth;
 
 class ReadingRepository implements ReadingInterface
@@ -107,6 +108,23 @@ class ReadingRepository implements ReadingInterface
         }catch (\Exception $exception){
             return response()->json(['message'=>$exception->getMessage()],400);
         }
+    }
+
+    public function getWeeklyReading(){
+        $data=[
+            'days'=>[],
+            'datasets'=>[
+
+            ]
+        ];
+
+        $days = CarbonPeriod::create(now()->subDays(6), now());
+        foreach ($days as $day) {
+            $reading=Reading::where('created_at','like',$day->format('Y-m-d').'%')->count();
+            $data['days'][]=$day->format('d');
+            $data['datasets'][]=$reading;
+        }
+        return $data;
     }
 
 }
