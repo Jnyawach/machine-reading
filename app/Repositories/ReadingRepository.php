@@ -16,13 +16,16 @@ class ReadingRepository implements ReadingInterface
     public function getReadings(){
         $readings=Reading::with(['product','shift','user','confirmBy','machine'])
             ->when(request('search'),function ($query){
-                $query->where('name','like','%'.request('search').'%');
+                $query->whereHas('product', function ($q){
+                    $q->where('name','like','%'.request('search').'%');
+                });
+
             })
-            ->when(request('product_type'),function ($query){
-                $query->where('product_type_id',request('product_type'));
+            ->when(request('shift'),function ($query){
+                $query->where('shift_id',request('shift'));
             })
-            ->when(request('product_weight'),function ($query){
-                $query->where('product_weight_id',request('product_weight'));
+            ->when(request('machine'),function ($query){
+                $query->where('machine_id',request('machine'));
             })
             ->paginate(request('showing')??10);
 

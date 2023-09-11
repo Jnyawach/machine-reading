@@ -20,7 +20,7 @@ class AdminProducts extends Controller
     public function __construct(ProductRepository $productRepository)
     {
         $this->productRepository=$productRepository;
-        $this->middleware(['role:'.RoleEnum::Admin->value]);
+
     }
     /**
      * Display a listing of the resource.

@@ -22,7 +22,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(MachineRepository::class, MachineInterface::class);
+        $this->app->bind(MachineInterface::class,MachineRepository::class);
         $this->app->bind(UserRepository::class, UserInterface::class);
         $this->app->bind(MachineInterface::class,MachineRepository::class);
         $this->app->bind(ShiftInterface::class,ShiftRepository::class);

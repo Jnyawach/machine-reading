@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Machine;
 use App\Models\Product;
+use App\Models\Shift;
 use App\Repositories\ReadingRepository;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -22,8 +24,15 @@ class AdminReadingController extends Controller
     {
         //
         $readings=$this->readingRepository->getReadings();
-        $filters=request()->all('search','showing','shift','product_weight');
-        return inertia::render('admin/reading/index', compact('readings'));
+        $filters=request()->all('search','showing','shift','machine');
+        $shifts=Shift::all();
+        $machines=Machine::select('name','id')->get();
+        return inertia::render('admin/reading/index', compact(
+            'readings',
+            'filters',
+            'machines',
+            'shifts'
+        ));
     }
 
     /**

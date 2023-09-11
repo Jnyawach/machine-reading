@@ -2,18 +2,14 @@
     <Head>
         <title>Verify you account</title>
     </Head>
-    <div class="grid h-screen bg-sumo-300 grid-cols-2">
-        <div class="flex justify-center">
-            
-        </div>
-        <div class="bg-white rounded-l-3xl flex justify-center">
-            <div class="self-center w-3/5 px-5">
-                <div class="mt-32">
+    <div class="flex place-content-center h-screen">
+        <div class=" self-center bg-white rounded-xl flex justify-center border shadow w-1/2">
+            <div class="self-center  p-5">
+                <div class="">
+                    <h1 class="text-center text-lg font-bold">Verify you email</h1>
                     <div class=" py-5 px-5">
                         <div class="bg-sky-50 p-3 flex rounded-md"  v-if="$page.props.status">
-                            <div class="mr-3">
-                                <span class="text-sky-800"><i class="fas fa-info-circle"></i></span>
-                            </div>
+
                             <div >
                                 <p class="text-sky-800 text-sm">{{$page.props.status}}</p>
                             </div>

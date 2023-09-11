@@ -46,7 +46,7 @@ const deleteProduct=(id:number)=>{
 </script>
 
 <template>
-    <Head title="Shifts" />
+    <Head title="Products" />
 <admin>
     <div class="flex justify-between items-center">
         <div>

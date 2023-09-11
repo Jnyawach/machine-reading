@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\StatusEnum;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\MachineResource;
 use App\Interfaces\MachineInterface;
-use App\Models\Machine;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use App\Enums\RoleEnum;
 
@@ -27,9 +24,11 @@ class AdminMachineController extends Controller
     public function index()
     {
         //
+
         $machines=$this->machineRepository->getMachines();
         $filters = request()->all('search', 'showing');
         $statuses=StatusEnum::cases();
+
         return inertia::render('admin/machines/index', compact('machines','filters','statuses'));
     }
 

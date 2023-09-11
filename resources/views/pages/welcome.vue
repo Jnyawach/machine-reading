@@ -40,7 +40,12 @@ let form=useForm({
                            <Link :href="route('password-reset')" class="hover:text-sky-700">Forgot password</Link>
                         </div>
                         <div class="order-1 md:order-2">
-                            <button type="submit" class="btn-primary w-44">Login</button>
+                            <button type="submit" class="btn-primary w-44 flex items-center gap-2 justify-center">
+                                <span>Login</span>
+                                <svg v-if="form.processing" class="fill-white w-5 animate-pulse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path d="M400 256c0 26.5 21.5 48 48 48s48-21.5 48-48S474.5 208 448 208S400 229.5 400 256zM112 256c0-26.5-21.5-48-48-48S16 229.5 16 256S37.5 304 64 304S112 282.5 112 256zM304 256c0-26.5-21.5-48-48-48S208 229.5 208 256S229.5 304 256 304S304 282.5 304 256z"/>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                     <div class="pt-8 text-center">

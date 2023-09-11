@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MainController::class, 'home'])->name('login');
+Route::get('/', [MainController::class, 'home'])->name('login')->middleware('guest');
 
 
 require __DIR__.'/auth.php';

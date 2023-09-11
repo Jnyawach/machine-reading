@@ -18,7 +18,7 @@
 
                             <slot name="header">
                                 <div class="font-bold text-sumo-300 text-lg">
-                                    <h6>Update Machine</h6>
+                                    <h6>Update shift</h6>
                                 </div>
                             </slot>
                             <div>
@@ -67,7 +67,7 @@
                     <hr>
                     <footer class="p-3.5">
                         <div class="flex justify-end">
-                            <button form="saveFacilities" type="submit" class="btn-primary btn-medium">Update machine</button>
+                            <button form="saveFacilities" type="submit" class="btn-primary btn-medium">Update shift</button>
                         </div>
                     </footer>
                 </div>

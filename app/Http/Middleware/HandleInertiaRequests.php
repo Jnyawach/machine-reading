@@ -39,7 +39,12 @@ class HandleInertiaRequests extends Middleware
     {
         $auth=null;
         if (Auth::check()){
-            $auth=Auth::user();
+            $auth=[
+                'name'=>Auth::user()->name,
+                'id'=>Auth::id(),
+                'email'=>Auth::user()->email,
+                'role'=>Auth::user()->getRoleNames()->first()
+            ];
         }
 
         return array_merge(parent::share($request), [

@@ -36,7 +36,7 @@ class AuthController extends Controller
             'name'=>$validated['name'],
             'email'=>$validated['email'],
             'password'=>Hash::make($validated['password']),
-            'first_login'=>1
+            'first_login'=>0
         ]);
         $user->assignRole($role);
 
@@ -47,7 +47,9 @@ class AuthController extends Controller
             'otp_code'=>$token
         ]);
         //event for email verification
-       $user->notify(new EmailVerificationNotification($token));
+      // $user->notify(new EmailVerificationNotification($token));
+       Auth::login($user);
+       return redirect()->route('verify');
     }
 
     public function authenticate(Request $request){

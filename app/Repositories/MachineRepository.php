@@ -10,8 +10,7 @@ class MachineRepository implements MachineInterface
 {
 
     public function getMachines(){
-        $machines=Machine::query()
-           ->when(request('search'), function($query){
+        $machines=Machine::when(request('search'), function($query){
                $query->where('name','like','%'.request('search').'%');
            })
          ->paginate(request('showing')??10);
