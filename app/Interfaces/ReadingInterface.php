@@ -13,6 +13,7 @@ interface ReadingInterface
 
     public function markConfirmed(string $id);
     public function getWeeklyReading();
+    public function getMyReadings($id);
 
 
 }

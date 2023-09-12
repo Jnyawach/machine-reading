@@ -18,6 +18,7 @@ let props=defineProps({
         type: Object as PropType<Status[]>,
         required: true
     },
+    product_types:Object
 })
 
 const search = ref<String>(props.filters.search);
@@ -48,7 +49,7 @@ const deleteMachine=(id:number)=>{
         <h1 class="text-2xl font-bold">Machines</h1>
     </div>
     <div>
-        <create-machine :statuses="statuses">
+        <create-machine :statuses="statuses" :product_types="product_types">
             <template #trigger>
                 <button class="btn-simple btn-medium flex items-center gap-2">
 
@@ -102,6 +103,9 @@ const deleteMachine=(id:number)=>{
                         <th scope="col" class="px-2 py-3">
                             Machine name
                         </th>
+                        <th scope="col" class="px-2 py-3">
+                            Machine type
+                        </th>
 
                         <th scope="col" class="px-2 py-3">
                            Status
@@ -117,10 +121,13 @@ const deleteMachine=(id:number)=>{
                             {{machine.name}}
                         </th>
                         <td class="px-2 py-3 capitalize">
+                            {{machine.product_type}}
+                        </td>
+                        <td class="px-2 py-3 capitalize">
                             {{machine.status}}
                         </td>
                         <td class="px-2 py-3">
-                            <update-machine :machine="machine" :statuses="statuses">
+                            <update-machine :machine="machine" :statuses="statuses" :product_types="product_types">
                                 <template #trigger>
                                     <button class="text-green-600">Update</button>
                                 </template>

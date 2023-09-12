@@ -28,7 +28,8 @@ class MachineSeeder extends Seeder
         foreach ($machines as $machine){
             Machine::create([
                 'name'=>$machine,
-                'status'=>StatusEnum::Enabled->value
+                'status'=>StatusEnum::Enabled->value,
+                'product_type_id'=>1
             ]);
         }
     }

@@ -18,7 +18,7 @@
 
                             <slot name="header">
                                 <div class="font-bold text-sumo-300 text-lg">
-                                    <h6>Update Machine</h6>
+                                    <h6>Add Machine</h6>
                                 </div>
                             </slot>
                             <div>
@@ -55,6 +55,17 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="grid my-5">
+                                <label for="name" class="text-sm font-medium text-gray-700">Product type</label>
+                                <select class="sumo-input my-2" v-model="form.product_type" required>
+                                    <option value="">Select product type</option>
+                                    <option :value="product_type.id" :key="index" v-for="(product_type, index) in product_types">{{product_type.name}}</option>
+
+                                </select>
+                                <div class="sumo-error" v-if="form.errors.product_type">
+                                    {{ form.errors.product_type}}
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <hr>
@@ -74,7 +85,8 @@ import {watch, ref} from "vue";
 import {useForm} from "@inertiajs/vue3";
 
 let props=defineProps({
-    statuses:Object
+    statuses:Object,
+    product_types:Object
 })
 
 const show=ref(false)
@@ -92,6 +104,7 @@ watch(show,(val)=>{
 let form=useForm({
     name:'',
     status:'',
+    product_type:''
 })
 
 const submit = () => {

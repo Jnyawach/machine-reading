@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\StatusEnum;
 use App\Http\Controllers\Controller;
 use App\Interfaces\MachineInterface;
+use App\Models\ProductType;
 use App\Models\Reports;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -29,8 +30,10 @@ class AdminMachineController extends Controller
         $machines=$this->machineRepository->getMachines();
         $filters = request()->all('search', 'showing');
         $statuses=StatusEnum::cases();
+        $product_types=ProductType::select('name','id')->get();
 
-        return inertia::render('admin/machines/index', compact('machines','filters','statuses'));
+        return inertia::render('admin/machines/index', compact(
+            'machines','filters','statuses','product_types'));
     }
 
     /**
@@ -51,6 +54,7 @@ class AdminMachineController extends Controller
         $validated=$request->validate([
             'name'=>'required|string|max:125',
             'status'=>'required|string',
+            'product_type'=>'required|integer|exists:product_types,id'
         ]);
         $machine=$this->machineRepository->storeMachine($validated);
 
@@ -86,12 +90,13 @@ class AdminMachineController extends Controller
         $validated=$request->validate([
             'name'=>'required|string|max:125',
             'status'=>'required|string',
+            'product_type'=>'required|integer|exists:product_types,id'
         ]);
         $machine=$this->machineRepository->updateMachine($validated,$id);
-        if ($machine['status']==200) {
-            return redirect()->back()->with('success', $machine['message']);
+        if ($machine->status()==200) {
+            return redirect()->back()->with('success', 'Machine updated successfully');
         } else {
-            return redirect()->back()->with('status', $machine['message']);
+            return redirect()->back()->with('status', 'Machine update failed');
         }
     }
 

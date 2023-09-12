@@ -19,7 +19,11 @@ class MachineRepository implements MachineInterface
 
     public function storeMachine($data){
         try {
-            $machine=Machine::create($data);
+            $machine=Machine::create([
+                'name'=>$data['name'],
+                'status'=>$data['status'],
+                'product_type_id'=>$data['product_type']
+            ]);
             return response()->json([
                 'status'=>200,
                 'message'=>'Machine created successfully',
@@ -37,7 +41,11 @@ class MachineRepository implements MachineInterface
     public function updateMachine($data, $id){
         try {
             $machine=Machine::find($id);
-            $machine->update($data);
+            $machine->update([
+                'name'=>$data['name'],
+                'status'=>$data['status'],
+                'product_type_id'=>$data['product_type']
+            ]);
             return response()->json([
                 'status'=>200,
                 'message'=>'Machine updated successfully',

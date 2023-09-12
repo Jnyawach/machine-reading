@@ -18,6 +18,8 @@ class MachineResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'status'=>$this->status,
+            'product_type'=>$this->productType->name,
+            'product_type_id'=>$this->product_type_id
         ];
     }
 }

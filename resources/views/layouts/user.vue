@@ -30,7 +30,7 @@ const logout=()=>{
 
         <div>
             <button class="flex gap-2 items-center"  data-dropdown-toggle="dropdownMenu">
-                <span class="font-bold">Joshua</span>
+                <span class="font-bold">{{$page.props.auth.name}}</span>
                 <img :src="'/images/user-icon.png'" alt="Profile picture" class="h-10 rounded-full">
             </button>
 
@@ -165,7 +165,7 @@ const logout=()=>{
             <div class="flex justify-between">
                 <div class="flex gap-3 items-center">
                     <img alt="Profile Picture" :src="'/images/user-icon.png'" class="h-12 rounded-full border border-white">
-                    <h1 class="text-lg font-bold">Hello Joshua, Welcome!</h1>
+                    <h1 class="text-lg font-bold capitalize">Hello {{$page.props.auth.name}}, Welcome!</h1>
                 </div>
                 <div class="flex gap-2 items-center">
                     <div>
