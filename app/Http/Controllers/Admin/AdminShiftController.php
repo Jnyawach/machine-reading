@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Reports;
 use App\Repositories\ShiftRepository;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -101,5 +102,16 @@ class AdminShiftController extends Controller
         }else{
             return redirect()->back()->with('status', 'Shift deletion failed');
         }
+    }
+
+    public function report($format)
+    {
+        $shifts=$this->shiftRepository->getShift();
+
+        $fileName="Shifts";
+        $data=[
+            'shifts'=>$shifts,
+        ];
+        return Reports::generate($format,'reports.shifts',$data,$fileName);
     }
 }

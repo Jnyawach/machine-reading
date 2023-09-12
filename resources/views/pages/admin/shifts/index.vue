@@ -82,6 +82,12 @@ const deleteShift=(id:number)=>{
                     </div>
                 </div>
             </div>
+            <div class="flex justify-end gap-3 self-center my-3">
+                <h6 class="font-semibold">Export Data:</h6>
+                <a :href="route('admin.shifts.report','pdf')" class="text-sky-700 font-bold">PDF</a>
+                <a :href="route('admin.shifts.report','excel')" class="text-sky-700 font-bold">CSV</a>
+                <button class="text-sky-700 font-bold">JSON</button>
+            </div>
         </div>
 
         <!--machine table-->

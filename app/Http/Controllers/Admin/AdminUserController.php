@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
+use App\Models\Reports;
 use App\Models\User;
 use App\Models\VerifyUser;
 use Illuminate\Http\Request;
@@ -54,7 +55,7 @@ class AdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $validated=$request->validate([
             'name'=>['required', 'string', 'max:255'],
             'email'=>['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -71,7 +72,7 @@ class AdminUserController extends Controller
                    'first_login'=>1
                ]);
                $user->assignRole($role);
-       
+
                //event
               $user->notify(new NewUserNotification($temp_pass));
 
@@ -133,5 +134,16 @@ class AdminUserController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('User Not Deleted. Try again Later');
         }
+    }
+
+    public function report($format)
+    {
+        $users = User::all();
+
+        $fileName="Users";
+        $data=[
+            'users'=>$users,
+        ];
+        return Reports::generate($format,'reports.users',$data,$fileName);
     }
 }

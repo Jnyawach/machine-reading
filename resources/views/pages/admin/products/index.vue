@@ -107,8 +107,8 @@ const deleteProduct=(id:number)=>{
     </div>
     <div class="flex justify-end gap-3 self-center my-3">
         <h6 class="font-semibold">Export Data:</h6>
-        <button class="text-sky-700 font-bold">PDF</button>
-        <button class="text-sky-700 font-bold">CSV</button>
+        <a :href="route('admin.products.report','pdf')" class="text-sky-700 font-bold">PDF</a>
+        <a :href="route('admin.products.report','excel')" class="text-sky-700 font-bold">CSV</a>
         <button class="text-sky-700 font-bold">JSON</button>
     </div>
     <div class="border rounded-xl  shadow-sm">
