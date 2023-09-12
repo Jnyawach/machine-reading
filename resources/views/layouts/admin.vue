@@ -59,7 +59,7 @@ const logout=()=>{
 
 
     <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-white shadow-r-lg border-r" aria-label="Sidebar">
-        <div class="h-full px-5 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <div class="h-full px-5 py-4 overflow-y-auto bg-white">
             <div class="my-3">
                 <h1 class="font-bold text-lg ">MACHINE READING</h1>
             </div>
@@ -191,7 +191,7 @@ const logout=()=>{
                         </button>
                     </div>
                     <div>
-                        <button class="btn-primary btn-medium">
+                        <button class="btn-primary btn-medium" @click="logout">
                             Logout
                         </button>
                     </div>

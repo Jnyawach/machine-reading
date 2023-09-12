@@ -119,6 +119,9 @@ const deleteProduct=(id:number)=>{
                             Weight
                         </th>
                         <th scope="col" class="px-2 py-3">
+                            Bale
+                        </th>
+                        <th scope="col" class="px-2 py-3">
                             Product Type
                         </th>
                         <th scope="col" class="px-2 py-3">
@@ -134,15 +137,19 @@ const deleteProduct=(id:number)=>{
                         <th scope="row" class="px-2 py-3 font-semibold whitespace-nowrap">
                             {{product.name}}
                         </th>
-                        <td class="px-2 py-3 capitalize">
+                        <td class="px-2 py-3">
                             {{product.product_weight}}
 
                         </td>
-                        <td class="px-2 py-3 capitalize">
+                        <td class="px-2 py-3">
+                            {{product.bale}} pcs
+
+                        </td>
+                        <td class="px-2 py-3">
                             {{product.product_type}}
 
                         </td>
-                        <td class="px-2 py-3 capitalize">
+                        <td class="px-2 py-3">
                             {{product.status}}
 
                         </td>
