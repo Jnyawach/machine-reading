@@ -27,7 +27,7 @@ class UserReadingController extends Controller
         $filters=request()->all('search','showing','shift','machine');
         $shifts=Shift::all();
         $machines=Machine::select('name','id')->get();
-        return inertia::render('admin/reading/index', compact(
+        return inertia::render('user/reading/index', compact(
             'readings',
             'filters',
             'machines',
@@ -42,7 +42,7 @@ class UserReadingController extends Controller
     {
         //
         $products=Product::select('id','name')->get();
-        return inertia::render('admin/reading/create');
+        return inertia::render('user/reading/create');
     }
 
     /**

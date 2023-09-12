@@ -28,7 +28,7 @@ class UserMachineController extends Controller
         $filters = request()->all('search', 'showing');
         $statuses=StatusEnum::cases();
 
-        return inertia::render('admin/machines/index', compact('machines','filters','statuses'));
+        return inertia::render('user/machines/index', compact('machines','filters','statuses'));
     }
 
     /**
