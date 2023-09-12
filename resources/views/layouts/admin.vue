@@ -31,7 +31,7 @@ const logout=()=>{
         <div>
             <button class="flex gap-2 items-center"  data-dropdown-toggle="dropdownMenu">
                 <span class="font-bold">{{$page.props.auth.name}}</span>
-                <img :src="'/images/lady-smiling-on-call.jpg'" alt="Profile picture" class="h-10 rounded-full">
+                <img :src="'/images/user-icon.png'" alt="Profile picture" class="h-10 rounded-full">
             </button>
 
 
@@ -66,7 +66,7 @@ const logout=()=>{
             <div class="my-5 bg-sky-50 rounded-xl p-2 ">
                 <div class="flex gap-2 items-center border-b py-3 border-gray-300">
                     <div>
-                        <img alt="User profile" :src="'/images/lady-smiling-on-call.jpg'" class="h-11 rounded-full">
+                        <img alt="User profile" :src="'/images/user-icon.png'" class="h-11 rounded-full">
                     </div>
                     <div>
                         <h6 class="font-bold text-sm">{{$page.props.auth.name}}</h6>
@@ -186,7 +186,7 @@ const logout=()=>{
         <div class="hidden sm:block">
             <div class="flex justify-between">
                 <div class="flex gap-3 items-center">
-                    <img alt="Profile Picture" :src="'/images/lady-smiling-on-call.jpg'" class="h-12 rounded-full border border-white">
+                    <img alt="Profile Picture" :src="'/images/user-icon.png'" class="h-12 rounded-full border border-white">
                     <h1 class="text-lg font-bold">Hello {{$page.props.auth.name}}, Welcome!</h1>
                 </div>
                 <div class="flex gap-2 items-center">
