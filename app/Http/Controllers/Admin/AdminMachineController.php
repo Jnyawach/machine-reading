@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\StatusEnum;
 use App\Http\Controllers\Controller;
 use App\Interfaces\MachineInterface;
+use App\Models\Reports;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Enums\RoleEnum;
@@ -107,5 +108,16 @@ class AdminMachineController extends Controller
         } else {
             return redirect()->back()->with('status', 'Machine deletion failed');
         }
+    }
+
+    public function report($format)
+    {
+        $machines=$this->machineRepository->getMachines();
+
+        $fileName="Machines";
+        $data=[
+            'machines'=>$machines,
+        ];
+        return Reports::generate($format,'reports.machines',$data,$fileName);
     }
 }
