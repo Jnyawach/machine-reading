@@ -90,9 +90,24 @@ let form=useForm({
     'shifts': '',
     'reading': '',
 })
+const perms=()=>{
+    props.permissions.forEach((score) => {
+        if(score.name == 'products'){
+            form.products=true
+        }
+        if(score.name == 'machine'){
+            form.machine=true
+        }
+        if(score.name == 'shifts'){
+            form.shifts=true
+        }
+        if(score.name == 'reading'){
+            form.reading=true
+        }
+    });
+}
 const launchForm=()=>{
-    console.log(props);
-    
+    perms();
     form.role=props.role?.name
     show.value=true
 }
