@@ -44,7 +44,7 @@ class HandleInertiaRequests extends Middleware
                 'id'=>Auth::id(),
                 'email'=>Auth::user()->email,
                 'role'=>Auth::user()->getRoleNames()->first(),
-                'permissions'=>Auth::user()->getAllPermissions()
+                'permissions'=>Auth::user()->getAllPermissions()->pluck('name')
             ];
         }
 
