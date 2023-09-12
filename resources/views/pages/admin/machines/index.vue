@@ -92,7 +92,6 @@ const deleteMachine=(id:number)=>{
         <h6 class="font-semibold">Export Data:</h6>
         <a :href="route('admin.machines.report','pdf')" class="text-sky-700 font-bold">PDF</a>
         <a :href="route('admin.machines.report','excel')" class="text-sky-700 font-bold">CSV</a>
-        <button class="text-sky-700 font-bold">JSON</button>
     </div>
     <div class="border rounded-xl overflow-hidden shadow-sm">
         <div>
