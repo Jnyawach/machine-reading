@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Shift;
 use App\Repositories\ReadingRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class UserReadingController extends Controller
@@ -23,11 +24,11 @@ class UserReadingController extends Controller
     public function index()
     {
         //
-        $readings=$this->readingRepository->getReadings();
+        $readings=$this->readingRepository->getMyReadings(Auth::id());
         $filters=request()->all('search','showing','shift','machine');
         $shifts=Shift::all();
         $machines=Machine::select('name','id')->get();
-        return inertia::render('admin/reading/index', compact(
+        return inertia::render('user/reading/index', compact(
             'readings',
             'filters',
             'machines',
@@ -42,7 +43,7 @@ class UserReadingController extends Controller
     {
         //
         $products=Product::select('id','name')->get();
-        return inertia::render('admin/reading/create');
+        return inertia::render('user/reading/create');
     }
 
     /**

@@ -16,7 +16,10 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name',125);
             $table->string('slug',125);
+            $table->unsignedBigInteger('product_type_id')->index();
             $table->string('status')->default(\App\Enums\StatusEnum::Enabled->value);
+            $table->foreign('product_type_id')->references('id')
+               ->on('product_types') ->cascadeOnDelete();
         });
     }
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import Admin from "@/views/layouts/admin.vue";
+import User from "@/views/layouts/user.vue";
 import {Head} from "@inertiajs/vue3";
 import {router} from "@inertiajs/vue3";
 import AddReading from "@/views/components/readings/add-reading.vue";
@@ -16,7 +16,7 @@ let props=defineProps({
 })
 
 const markConfirmed=(id:number)=>{
-    router.patch(route('mark.reading.confirmed',id))
+    router.patch(route('user.mark.reading.confirmed',id))
 }
 
 const search = ref<String>(props.filters?.search);
@@ -31,7 +31,7 @@ const clearFilter=()=>{
 }
 
 watch([search,showing,shift, machine],()=>{
-    router.get(route('readings.index'),{
+    router.get(route('user.readings.index'),{
         search: search.value,
         showing: showing.value,
         shift:shift.value ,
@@ -44,7 +44,7 @@ watch([search,showing,shift, machine],()=>{
     <Head>
         <title>Readings</title>
     </Head>
-<admin>
+<user>
     <div class="flex justify-between items-center my-5">
         <div>
             <h1 class="text-2xl font-bold">Readings</h1>
@@ -106,8 +106,8 @@ watch([search,showing,shift, machine],()=>{
         </div>
     <div class="flex justify-end gap-3 self-center my-3">
         <h6 class="font-semibold">Export Data:</h6>
-        <a :href="route('admin.readings.report','pdf')" class="text-sky-700 font-bold">PDF</a>
-        <a :href="route('admin.readings.report','excel')" class="text-sky-700 font-bold">CSV</a>
+        <button class="text-sky-700 font-bold">PDF</button>
+        <button class="text-sky-700 font-bold">CSV</button>
         <button class="text-sky-700 font-bold">JSON</button>
     </div>
     <div class="border rounded-xl shadow-sm overflow-hidden">
@@ -184,7 +184,7 @@ watch([search,showing,shift, machine],()=>{
             </div>
         </div>
     </div>
-</admin>
+</user>
 </template>
 
 <style scoped>

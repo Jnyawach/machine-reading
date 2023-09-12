@@ -54,6 +54,17 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="grid my-5">
+                                <label for="name" class="text-sm font-medium text-gray-700">Product type</label>
+                                <select class="sumo-input my-2" v-model="form.product_type" required>
+                                    <option value="">Select product type</option>
+                                    <option :value="product_type.id" :key="index" v-for="(product_type, index) in product_types">{{product_type.name}}</option>
+
+                                </select>
+                                <div class="sumo-error" v-if="form.errors.product_type">
+                                    {{ form.errors.product_type}}
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <hr>
@@ -61,6 +72,7 @@
                         <div class="flex justify-end">
                             <button form="saveFacilities" type="submit" class="btn-primary btn-medium">Update machine</button>
                         </div>
+
                     </footer>
                 </div>
             </div>
@@ -74,7 +86,8 @@ import {useForm} from "@inertiajs/vue3";
 
 let props=defineProps({
     machine:Object,
-    statuses:Object
+    statuses:Object,
+    product_types:Object
 })
 
 const show=ref(false)
@@ -92,6 +105,7 @@ watch(show,(val)=>{
 let form=useForm({
     name:props.machine?.name,
     status:props.machine?.status,
+    product_type:props.machine?.product_type_id,
     _method:'PATCH'
 
 })

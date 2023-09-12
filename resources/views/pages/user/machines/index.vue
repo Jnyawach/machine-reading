@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import Admin from "@/views/layouts/admin.vue";
+import User from "@/views/layouts/user.vue";
 import {Head, Link, router} from "@inertiajs/vue3";
 import {PropType, ref, watch, watchEffect} from "vue";
 import PromptAlert from "@/views/components/general-components/prompt-alert.vue";
@@ -29,21 +29,21 @@ const clearFilter=()=>{
 
 
 watch([search,showing],()=>{
-    router.get(route('machines.index', {
+    router.get(route('user.machines.index', {
         search: search.value,
         showing: showing.value,
     },{preserveScroll:true,preserveState:true}))
 },)
 
 const deleteMachine=(id:number)=>{
-    router.delete(route('machines.destroy',id))
+    router.delete(route('user.machines.destroy',id))
 };
 
 </script>
 
 <template>
     <Head title="Machines" />
-<admin>
+<user>
 <div class="flex justify-between items-center">
     <div>
         <h1 class="text-2xl font-bold">Machines</h1>
@@ -90,8 +90,8 @@ const deleteMachine=(id:number)=>{
     <!--machine table-->
     <div class="flex justify-end gap-3 self-center my-3">
         <h6 class="font-semibold">Export Data:</h6>
-        <a :href="route('admin.machines.report','pdf')" class="text-sky-700 font-bold">PDF</a>
-        <a :href="route('admin.machines.report','excel')" class="text-sky-700 font-bold">CSV</a>
+        <button class="text-sky-700 font-bold">PDF</button>
+        <button class="text-sky-700 font-bold">CSV</button>
         <button class="text-sky-700 font-bold">JSON</button>
     </div>
     <div class="border rounded-xl overflow-hidden shadow-sm">
@@ -123,7 +123,7 @@ const deleteMachine=(id:number)=>{
                         <td class="px-2 py-3 capitalize">
                             {{machine.product_type}}
                         </td>
-                        <td class="px-2 py-3 ">
+                        <td class="px-2 py-3 capitalize">
                             {{machine.status}}
                         </td>
                         <td class="px-2 py-3">
@@ -155,7 +155,7 @@ const deleteMachine=(id:number)=>{
             </div>
         </div>
     </div>
-</admin>
+</user>
 </template>
 
 <style scoped>

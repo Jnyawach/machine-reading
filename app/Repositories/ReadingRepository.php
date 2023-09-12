@@ -33,6 +33,26 @@ class ReadingRepository implements ReadingInterface
         return ReadingResource::collection($readings);
     }
 
+    public function getMyReadings($id){
+        $readings=Reading::with(['product','shift','user','confirmBy','machine'])
+            ->where('user_id', $id)
+            ->when(request('search'),function ($query){
+                $query->whereHas('product', function ($q){
+                    $q->where('name','like','%'.request('search').'%');
+                });
+
+            })
+            ->when(request('shift'),function ($query){
+                $query->where('shift_id',request('shift'));
+            })
+            ->when(request('machine'),function ($query){
+                $query->where('machine_id',request('machine'));
+            })
+            ->paginate(request('showing')??10);
+
+        return ReadingResource::collection($readings);
+    }
+
     public function getReadingById(string $id){
         return new ReadingResource(Reading::findOrFail($id));
     }

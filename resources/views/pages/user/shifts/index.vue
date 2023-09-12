@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import Admin from "@/views/layouts/admin.vue";
+import User from "@/views/layouts/user.vue";
 import {Head, router} from "@inertiajs/vue3";
 import {PropType, ref, watch} from "vue";
 import PromptAlert from "@/views/components/general-components/prompt-alert.vue";
@@ -39,7 +39,7 @@ const deleteShift=(id:number)=>{
 
 <template>
     <Head title="Shifts" />
-    <admin>
+    <user>
         <div class="flex justify-between items-center">
             <div>
                 <h1 class="text-2xl font-bold">Shifts</h1>
@@ -81,12 +81,6 @@ const deleteShift=(id:number)=>{
                         </button>
                     </div>
                 </div>
-            </div>
-            <div class="flex justify-end gap-3 self-center my-3">
-                <h6 class="font-semibold">Export Data:</h6>
-                <a :href="route('admin.shifts.report','pdf')" class="text-sky-700 font-bold">PDF</a>
-                <a :href="route('admin.shifts.report','excel')" class="text-sky-700 font-bold">CSV</a>
-                <button class="text-sky-700 font-bold">JSON</button>
             </div>
         </div>
 
@@ -153,7 +147,7 @@ const deleteShift=(id:number)=>{
                 </div>
             </div>
         </div>
-    </admin>
+    </user>
 </template>
 
 <style scoped>

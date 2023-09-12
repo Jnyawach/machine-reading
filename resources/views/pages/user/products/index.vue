@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import Admin from "@/views/layouts/admin.vue";
+import User from "@/views/layouts/user.vue";
 import {Head, Link, router} from "@inertiajs/vue3";
 import {ref, PropType, watch} from "vue";
 import DataPagination from "@/views/components/general-components/data-pagination.vue";
@@ -32,7 +32,7 @@ const clearFilter=()=>{
 }
 
 watch([search,showing, product_type, product_weight],()=>{
-    router.get(route('products.index', {
+    router.get(route('user.products.index', {
         search: search.value,
         showing: showing.value,
         product_type:product_type.value ,
@@ -41,19 +41,19 @@ watch([search,showing, product_type, product_weight],()=>{
 })
 
 const deleteProduct=(id:number)=>{
-    router.delete(route('products.destroy',id))
+    router.delete(route('user.products.destroy',id))
 };
 </script>
 
 <template>
     <Head title="Products" />
-<admin>
+<user>
     <div class="flex justify-between items-center">
         <div>
             <h1 class="text-2xl font-bold">Products</h1>
         </div>
         <div>
-            <Link :href="route('products.create')">
+            <Link :href="route('user.products.create')">
                 <button class="btn-simple btn-medium flex items-center gap-2">
 
                     <svg class="h-4 fill-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -107,8 +107,8 @@ const deleteProduct=(id:number)=>{
     </div>
     <div class="flex justify-end gap-3 self-center my-3">
         <h6 class="font-semibold">Export Data:</h6>
-        <a :href="route('admin.products.report','pdf')" class="text-sky-700 font-bold">PDF</a>
-        <a :href="route('admin.products.report','excel')" class="text-sky-700 font-bold">CSV</a>
+        <button class="text-sky-700 font-bold">PDF</button>
+        <button class="text-sky-700 font-bold">CSV</button>
         <button class="text-sky-700 font-bold">JSON</button>
     </div>
     <div class="border rounded-xl  shadow-sm">
@@ -183,12 +183,12 @@ const deleteProduct=(id:number)=>{
                                             </prompt-alert>
                                         </li>
                                         <li>
-                                            <Link :href="route('products.edit',product.id)">
+                                            <Link :href="route('user.products.edit',product.id)">
                                                 <button class="text-green-600 p-2">Update</button>
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link :href="route('products.show',product.slug)">
+                                            <Link :href="route('user.products.show',product.slug)">
                                                 <button class="p-2">Details</button>
                                             </Link>
                                         </li>
@@ -208,7 +208,7 @@ const deleteProduct=(id:number)=>{
             </div>
         </div>
     </div>
-</admin>
+</user>
 </template>
 
 <style scoped>

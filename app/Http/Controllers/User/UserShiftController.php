@@ -23,7 +23,7 @@ class UserShiftController extends Controller
         //
        $shifts=$this->shiftRepository->getShift();
        $filters=request()->all('search','showing');
-        return inertia::render('admin/shifts/index', compact('shifts','filters'));
+        return inertia::render('user/shifts/index', compact('shifts','filters'));
     }
 
     /**

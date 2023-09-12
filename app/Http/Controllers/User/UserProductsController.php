@@ -32,7 +32,7 @@ class UserProductsController extends Controller
         $filters=request()->all('search','showing','product_type','product_weight');
         $product_types=ProductType::select('id','name')->get();
         $product_weights=ProductWeight::all();
-        return inertia::render('admin/products/index', compact('products','filters','product_weights','product_types'));
+        return inertia::render('user/products/index', compact('products','filters','product_weights','product_types'));
     }
 
     /**
@@ -44,7 +44,7 @@ class UserProductsController extends Controller
         $product_types=ProductType::select('id','name')->get();
         $product_weights=ProductWeight::all();
 
-        return inertia::render('admin/products/create',compact('product_types','product_weights'));
+        return inertia::render('user/products/create',compact('product_types','product_weights'));
     }
 
     /**
@@ -75,7 +75,7 @@ class UserProductsController extends Controller
     {
         //
         $product=new ProductResource(Product::findBySlugOrFail($id));
-        return inertia::render('admin/products/show',compact('product'));
+        return inertia::render('user/products/show',compact('product'));
     }
 
     /**
@@ -87,7 +87,7 @@ class UserProductsController extends Controller
         $product=Product::findOrFail($id);
         $product_types=ProductType::select('id','name')->get();
         $product_weights=ProductWeight::all();
-        return inertia::render('admin/products/edit',compact('product','product_types','product_weights'));
+        return inertia::render('user/products/edit',compact('product','product_types','product_weights'));
     }
 
     /**

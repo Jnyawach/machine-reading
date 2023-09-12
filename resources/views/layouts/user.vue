@@ -30,7 +30,7 @@ const logout=()=>{
 
         <div>
             <button class="flex gap-2 items-center"  data-dropdown-toggle="dropdownMenu">
-                <span class="font-bold">Joshua</span>
+                <span class="font-bold">{{$page.props.auth.name}}</span>
                 <img :src="'/images/user-icon.png'" alt="Profile picture" class="h-10 rounded-full">
             </button>
 
@@ -53,9 +53,7 @@ const logout=()=>{
                 </ul>
             </div>
         </div>
-
     </div>
-{{$page.props.auth.permissions}}
 
     <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-white shadow-r-lg border-r" aria-label="Sidebar">
         <div class="h-full px-5 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
@@ -90,7 +88,7 @@ const logout=()=>{
                 </li>
 
                 <li v-if="$page.props.auth.permissions.includes('products')">
-                    <Link :href="route('products.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group"
+                    <Link :href="route('user.products.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group"
                           :class="{ 'bg-gray-100 text-sky-700': $page.component === 'user/products/index' }"
                     >
                         <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" :class="{ 'fill-sky-700': $page.component === 'user/users/index' }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -100,7 +98,7 @@ const logout=()=>{
                     </Link>
                 </li>
                 <li v-if="$page.props.auth.permissions.includes('machine')">
-                    <Link :href="route('machines.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group"
+                    <Link :href="route('user.machines.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group"
                           :class="{ 'bg-gray-100 text-sky-700': $page.component === 'user/machines/index' }"
                     >
                         <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" :class="{ 'fill-sky-700': $page.component === 'user/users/index' }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -110,7 +108,7 @@ const logout=()=>{
                     </Link>
                 </li>
                 <li v-if="$page.props.auth.permissions.includes('shifts')">
-                    <Link :href="route('shifts.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group"
+                    <Link :href="route('user.shifts.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group"
                           :class="{ 'bg-gray-100 text-sky-700': $page.component === 'user/shifts/index' }"
                     >
                         <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" :class="{ 'fill-sky-700': $page.component === 'user/users/index' }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -120,7 +118,7 @@ const logout=()=>{
                     </Link>
                 </li>
                 <li v-if="$page.props.auth.permissions.includes('reading')">
-                    <Link :href="route('readings.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group"
+                    <Link :href="route('user.readings.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group"
                           :class="{ 'bg-gray-100 text-sky-700': $page.component === 'user/reading/index' }"
                     >
 
@@ -167,7 +165,7 @@ const logout=()=>{
             <div class="flex justify-between">
                 <div class="flex gap-3 items-center">
                     <img alt="Profile Picture" :src="'/images/user-icon.png'" class="h-12 rounded-full border border-white">
-                    <h1 class="text-lg font-bold">Hello Joshua, Welcome!</h1>
+                    <h1 class="text-lg font-bold capitalize">Hello {{$page.props.auth.name}}, Welcome!</h1>
                 </div>
                 <div class="flex gap-2 items-center">
                     <div>

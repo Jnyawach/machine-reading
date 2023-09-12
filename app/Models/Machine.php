@@ -24,9 +24,13 @@ class Machine extends Model
             ]
         ];
     }
-    protected $fillable=['name','status'];
+    protected $fillable=['name','status','product_type_id'];
 
     public function readings(){
         return $this->hasMany(Reading::class);
+    }
+
+    public function productType(){
+        return $this->belongsTo(ProductType::class);
     }
 }
