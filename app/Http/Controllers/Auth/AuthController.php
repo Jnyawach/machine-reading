@@ -47,7 +47,7 @@ class AuthController extends Controller
             'otp_code'=>$token
         ]);
         //event for email verification
-      // $user->notify(new EmailVerificationNotification($token));
+       $user->notify(new EmailVerificationNotification($token));
        Auth::login($user);
        return redirect()->route('verify');
     }
@@ -147,11 +147,8 @@ class AuthController extends Controller
             case($role==RoleEnum::Admin->value):
                 return redirect(RouteServiceProvider::ADMIN);
                 break;
-            case($role==RoleEnum::Supervisor->value):
-                return redirect(RouteServiceProvider::User);
-                break;
-            case($role==RoleEnum::MachineOperator->value):
-                return redirect(RouteServiceProvider::User);
+            case($role !=RoleEnum::Admin->value):
+                return redirect(RouteServiceProvider::USER);
                 break;
             default:
                 return redirect('/');

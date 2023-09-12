@@ -74,11 +74,8 @@ class AuthenticatedUser extends Controller
                         case($role==RoleEnum::Admin->value):
                             return redirect(RouteServiceProvider::ADMIN);
                             break;
-                        case($role==RoleEnum::Supervisor->value):
-                            return redirect(RouteServiceProvider::SUPERVISOR);
-                            break;
-                        case($role==RoleEnum::MachineOperator->value):
-                            return redirect(RouteServiceProvider::MACHINEOPERATOR);
+                        case($role!=RoleEnum::Admin->value):
+                            return redirect(RouteServiceProvider::USER);
                             break;
                         default:
                             return redirect('/');
