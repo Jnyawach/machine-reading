@@ -90,6 +90,12 @@ watch([search,showing],()=>{
             </div>
         </div>
     </div>
+      <div class="flex justify-end gap-3 self-center my-3">
+          <h6 class="font-semibold">Export Data:</h6>
+          <button class="text-sky-700 font-bold">PDF</button>
+          <button class="text-sky-700 font-bold">CSV</button>
+          <button class="text-sky-700 font-bold">JSON</button>
+      </div>
     <div class="border rounded-xl overflow-hidden shadow-sm">
         <div>
             <div class="relative">
@@ -116,7 +122,7 @@ watch([search,showing],()=>{
                             <span v-for="permission in role.permissions" :key="permission.id">
                                 <span class="pr-2">{{ permission.name }} </span>
                             </span>
-                            
+
                         </th>
                         <td class="px-2 py-3">
                             <div class="flex">
@@ -132,7 +138,7 @@ watch([search,showing],()=>{
                                     </template>
                                 </edit-permission>
                             </div>
-                            
+
 
                         </td>
                     </tr>
