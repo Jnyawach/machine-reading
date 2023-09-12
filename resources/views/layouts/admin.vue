@@ -142,8 +142,17 @@ const logout=()=>{
                         <span class="ml-3">Users</span>
                     </Link>
                 </li>
+                <li>
+                    <Link :href="route('admin.roles.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group"
+                          :class="{ 'bg-gray-100 text-sky-700': $page.component === 'admin/roles/index' }"
+                    >
+                        <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" :class="{ 'fill-sky-700': $page.component === 'admin/roles/index' }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                           <path d="M272 304h-96C78.8 304 0 382.8 0 480c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32C448 382.8 369.2 304 272 304zM48.99 464C56.89 400.9 110.8 352 176 352h96c65.16 0 119.1 48.95 127 112H48.99zM224 256c70.69 0 128-57.31 128-128c0-70.69-57.31-128-128-128S96 57.31 96 128C96 198.7 153.3 256 224 256zM224 48c44.11 0 80 35.89 80 80c0 44.11-35.89 80-80 80S144 172.1 144 128C144 83.89 179.9 48 224 48z"/>
+                        </svg>
 
-
+                        <span class="ml-3">Roles</span>
+                    </Link>
+                </li>
             </ul>
             <div class="my-5">
                 <ul class="space-y-2 font-medium pt-3 text-sm">
@@ -191,7 +200,9 @@ const logout=()=>{
                         </button>
                     </div>
                     <div>
+
                         <button class="btn-primary btn-medium" @click="logout">
+
                             Logout
                         </button>
                     </div>

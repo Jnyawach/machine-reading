@@ -54,7 +54,7 @@
                                     <label class="sumo-label" for="role">Role:</label>
                                     <select class="sumo-input my-2" v-model="form.role">
                                         <option value="">Select role</option>
-                                        <option :value="role" :key="index" v-for="(role, index) in roles">{{role}}</option>
+                                        <option :value="role.name" :key="index" v-for="(role, index) in roles">{{role.name}}</option>
                                     </select>
                                     <div v-if="form.errors.name" class="mt-3 text-red-800 text-sm">
                                         <span class="text-xs">{{form.errors.name }}</span>

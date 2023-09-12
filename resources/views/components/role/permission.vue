@@ -17,7 +17,7 @@
                     <header class="p-3 bg-gray-100">
                         <div class="flex justify-between">
                             <div class="font-medium text-sumo-300 text-lg">
-                               Add User
+                               Edit Permissions
                             </div>
                             <div>
                                 <div class="text-end">
@@ -31,36 +31,38 @@
                     </header>
                     <div class="px-10 py-8 custom-scrolling overflow-y-auto max-h-[400px] m-2">
                         <form @submit.prevent="submit">
-                            <div class="grid grid-cols-2 gap-1 my-5">
-                                <div>
-                                    <label class="sumo-label" for="name">Name:</label>
-                                    <input type="text" class="sumo-input my-3" id="name" v-model="form.name">
-                                    <div v-if="form.errors.name" class="mt-3 text-red-800 text-sm">
-                                        <span class="text-xs">{{form.errors.name }}</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label class="sumo-label" for="email">Email:</label>
-                                    <input type="email" class="sumo-input my-3" id="email" v-model="form.email">
-                                    <div v-if="form.errors.email" class="mt-3 text-red-800 text-sm">
-                                        <span class="text-xs">{{form.errors.email }}</span>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="grid grid-cols-1 gap-1 my-5">
                                 <div>
-                                    <label class="sumo-label" for="role">Role:</label>
-                                    <select class="sumo-input my-2" v-model="form.role">
-                                        <option :value="null">Select role</option>
-                                        <option :value="role.name" :key="index" v-for="(role, index) in roles">{{role.name}}</option>
-                                    </select>
-                                    <div v-if="form.errors.role" class="mt-3 text-red-800 text-sm">
-                                        <span class="text-xs">{{form.errors.role }}</span>
+                                    <input type="checkbox" class="m-3 " id="products" v-model="form.products">
+                                    <label class="sumo-label" for="products">Products</label>
+                                    <div v-if="form.errors.products" class="mt-3 text-red-800 text-sm">
+                                        <span class="text-xs">{{form.errors.products }}</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="checkbox" class="m-3 " id="machine" v-model="form.machine">
+                                    <label class="sumo-label" for="machine">Machine</label>
+                                    <div v-if="form.errors.machine" class="mt-3 text-red-800 text-sm">
+                                        <span class="text-xs">{{form.errors.machine }}</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="checkbox" class="m-3 " id="shifts" v-model="form.shifts">
+                                    <label class="sumo-label" for="shifts">Shifts</label>
+                                    <div v-if="form.errors.shifts" class="mt-3 text-red-800 text-sm">
+                                        <span class="text-xs">{{form.errors.shifts }}</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="checkbox" class="m-3 " id="reading" v-model="form.reading">
+                                    <label class="sumo-label" for="reading">Reading</label>
+                                    <div v-if="form.errors.reading" class="mt-3 text-red-800 text-sm">
+                                        <span class="text-xs">{{form.errors.reading }}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="my-3 flex justify-end">
-                                <button type="submit" class="btn-primary">Add User <span v-show="form.processing" class="ml-2 animate-ping"><i class="fa-solid fa-ellipsis"></i></span></button>
+                                <button type="submit" class="btn-primary">Update <span v-show="form.processing" class="ml-2 animate-ping"><i class="fa-solid fa-ellipsis"></i></span></button>
                             </div>
                         </form>
                     </div>
@@ -75,22 +77,27 @@ import {useForm} from "@inertiajs/vue3";
 import {ref} from "vue";
 
 let props=defineProps({
-    user:Object,
-    roles:Object
+    role:Object,
+    permissions:Object
 })
 
 let show=ref(false)
 
 let form=useForm({
-    email: '',
-    name: '',
-    role:null,
+    'role':'',
+    'products': '',
+    'machine': '',
+    'shifts': '',
+    'reading': '',
 })
 const launchForm=()=>{
+    console.log(props);
+    
+    form.role=props.role?.name
     show.value=true
 }
 const submit=()=>{
-    form.post(route('admin.users.store'),{
+    form.post(route('admin.roles.permission'),{
         onSuccess:()=>{
             show.value = false
             form.reset()
