@@ -20,6 +20,7 @@
         "@types/moment": "^2.13.0",
         "@vueuse/components": "^10.4.1",
         "@vueuse/core": "^10.4.1",
+        "apexcharts": "^3.42.0",
         "flowbite": "^1.8.1",
         "lodash": "^4.17.21",
         "moment": "^2.29.4",

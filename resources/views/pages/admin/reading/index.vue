@@ -104,9 +104,13 @@ watch([search,showing,shift, machine],()=>{
                 </div>
             </div>
         </div>
-
+    <div class="flex justify-end gap-3 self-center my-3">
+        <h6 class="font-semibold">Export Data:</h6>
+        <button class="text-sky-700 font-bold">PDF</button>
+        <button class="text-sky-700 font-bold">CSV</button>
+        <button class="text-sky-700 font-bold">JSON</button>
+    </div>
     <div class="border rounded-xl shadow-sm overflow-hidden">
-
         <div>
             <div class="relative">
                 <table class="w-full text-sm text-left text-gray-700 font-medium">

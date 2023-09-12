@@ -58,9 +58,11 @@ defineProps({
       </div>
   </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-7 gap-3 my-5">
+
         <div class="lg:col-span-4 grid">
             <weekly-readings :weeklyReadings="weeklyReadings"></weekly-readings>
         </div>
+
       </div>
   </admin>
 
