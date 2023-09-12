@@ -2,7 +2,7 @@
 import {onMounted} from "vue";
 import { initFlowbite } from 'flowbite'
 import {Head} from "@inertiajs/vue3";
-import Supervisor from "@/views/layouts/supervisor.vue";
+import User from "@/views/layouts/user.vue";
 
 onMounted(() => {
     initFlowbite();
@@ -13,9 +13,9 @@ onMounted(() => {
     <Head>
         <title>Dashboard</title>
     </Head>
-  <supervisor>
+  <user>
 
-  </supervisor>
+  </user>
 
 </template>
 

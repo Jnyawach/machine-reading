@@ -57,12 +57,10 @@ const logout=()=>{
     </div>
 
 
-
     <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-white shadow-r-lg border-r" aria-label="Sidebar">
         <div class="h-full px-5 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
             <div class="my-3">
                 <h1 class="font-bold text-lg ">MACHINE READING</h1>
-
             </div>
             <div class="my-5 bg-sky-50 rounded-xl p-2 ">
                 <div class="flex gap-2 items-center border-b py-3 border-gray-300">
@@ -76,52 +74,65 @@ const logout=()=>{
                 </div>
                 <div class="py-3">
                     <h6 class="text-gray-600 font-medium text-sm">Role</h6>
-                    <h2 class="text-xl font-black text-sky-700">Supervisor</h2>
+                    <h2 class="text-xl font-black text-sky-700">{{$page.props.auth.role}}</h2>
                 </div>
             </div>
             <ul class="space-y-2 font-medium pt-3 min-h-[45vh] border-b border-gray-300 text-sm">
                 <li>
-                    <Link href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group">
-                        <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <Link :href="route('admin.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group"
+                          :class="{ 'bg-gray-100 text-sky-700': $page.component === 'admin/index' }"
+                    >
+                        <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" :class="{ 'fill-sky-700': $page.component === 'admin/index' }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                             <path d="M488 392H251.9C241.7 359.6 211.8 336 176 336s-65.69 23.62-75.93 56H24C10.75 392 0 402.7 0 416s10.75 24 24 24h76.07C110.3 472.4 140.2 496 176 496s65.69-23.62 75.93-56H488c13.25 0 24-10.75 24-24S501.3 392 488 392zM176 448c-17.64 0-32-14.36-32-32s14.36-32 32-32s32 14.36 32 32S193.6 448 176 448zM488 232h-76.07C401.7 199.6 371.8 176 336 176s-65.69 23.62-75.93 56H24C10.75 232 0 242.7 0 256s10.75 24 24 24h236.1C270.3 312.4 300.2 336 336 336s65.69-23.62 75.93-56H488C501.3 280 512 269.3 512 256S501.3 232 488 232zM336 288c-17.64 0-32-14.36-32-32s14.36-32 32-32s32 14.36 32 32S353.6 288 336 288zM24 120h108.1C142.3 152.4 172.2 176 208 176s65.69-23.62 75.93-56H488C501.3 120 512 109.3 512 96s-10.75-24-24-24h-204.1C273.7 39.62 243.8 16 208 16S142.3 39.62 132.1 72H24C10.75 72 0 82.75 0 96S10.75 120 24 120zM208 64c17.64 0 32 14.36 32 32s-14.36 32-32 32s-32-14.36-32-32S190.4 64 208 64z"/>
                         </svg>
                         <span class="ml-3">Dashboard</span>
                     </Link>
                 </li>
+
                 <li>
-                    <Link :href="route('products.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group">
-                        <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                    <Link :href="route('products.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group"
+                          :class="{ 'bg-gray-100 text-sky-700': $page.component === 'admin/products/index' }"
+                    >
+                        <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" :class="{ 'fill-sky-700': $page.component === 'admin/users/index' }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                             <path d="M208 224h160C394.5 224 416 202.5 416 176v-128C416 21.49 394.5 0 368 0h-160C181.5 0 160 21.49 160 48v128C160 202.5 181.5 224 208 224zM208 48H256v64L288 96l32 16v-64h48v128h-160V48zM208 288h-160C21.49 288 0 309.5 0 336v128C0 490.5 21.49 512 48 512h160C234.5 512 256 490.5 256 464v-128C256 309.5 234.5 288 208 288zM208 464h-160v-128H96v64L128 384l32 16v-64h48V464zM528 288h-160C341.5 288 320 309.5 320 336v128c0 26.51 21.49 48 48 48h160c26.51 0 48-21.49 48-48v-128C576 309.5 554.5 288 528 288zM528 464h-160v-128H416v64l32-16l32 16v-64h48V464z"/>
                         </svg>
                         <span class="ml-3">Products</span>
                     </Link>
                 </li>
                 <li>
-                    <Link :href="route('machines.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group">
-                        <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <Link :href="route('machines.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group"
+                          :class="{ 'bg-gray-100 text-sky-700': $page.component === 'admin/machines/index' }"
+                    >
+                        <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" :class="{ 'fill-sky-700': $page.component === 'admin/users/index' }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                             <path d="M232.1 256c0-8.75-7.188-16-15.94-16h-16C191.4 240 184.1 247.3 184.1 256l.0625 16c0 8.75 7.25 16 16 16h16c8.75 0 16-7.25 16-16L232.1 256zM168.1 304h-16c-8.75 0-16 7.25-16 16l-.0625 16c0 8.75 7.312 16 16.06 16h16c8.75 0 15.94-7.25 15.94-16L184.1 320C184.1 311.3 176.9 304 168.1 304zM264.1 304h-16c-8.75 0-16 7.25-16 16l-.0625 16c0 8.75 7.312 16 16.06 16h16c8.75 0 15.94-7.25 15.94-16l.0625-16C280.1 311.3 272.9 304 264.1 304zM136.1 256c0-8.75-7.188-16-15.94-16h-16C95.38 240 88.06 247.3 88.06 256l.0625 16c0 8.75 7.25 16 16 16h16c8.75 0 16-7.25 16-16L136.1 256zM511.3 378.8L487.9 215c-4.512-31.52-31.5-54.93-63.34-54.93l-224.4 .0566v-32L288.1 128.1c17.6 0 32.01-14.4 32.01-32V32c0-17.6-14.4-32-32-32h-224c-17.6 0-32 14.4-32 32v63.96c0 17.6 14.4 32 32 32L152.1 128v32L87.61 159.1C55.77 159.1 28.74 183.4 24.22 214.9l-23.58 164.6C.2168 382.5 0 385.5 0 388.5V480c0 17.67 14.33 32 31.1 32H479.1c17.67 0 31.1-14.33 31.1-32L512 387.9C512 384.8 511.7 381.8 511.3 378.8zM80.12 80v-32h191.1v32H80.12zM71.74 221.7C72.86 213.8 79.67 207.9 87.59 207.9l336.1 .0918c7.908 0 14.71 5.904 15.84 13.73L463.6 384H48.49L71.74 221.7zM464 464h-416v-32h416V464zM328.1 256c0-8.75-7.188-16-15.94-16h-16c-8.75 0-16.06 7.25-16.06 16l.0625 16c0 8.75 7.25 16 16 16h16c8.75 0 16-7.25 16-16L328.1 256zM408.1 240h-16c-8.75 0-16.06 7.25-16.06 16l.0625 16c0 8.75 7.25 16 16 16h16c8.75 0 16-7.25 16-16L424.1 256C424.1 247.3 416.9 240 408.1 240zM360.1 304h-16c-8.75 0-16 7.25-16 16l-.0625 16c0 8.75 7.312 16 16.06 16h16c8.75 0 15.94-7.25 15.94-16l.0625-16C376.1 311.3 368.9 304 360.1 304z"/>
                         </svg>
                         <span class="ml-3">Machines</span>
                     </Link>
                 </li>
                 <li>
-                    <Link :href="route('shifts.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group">
-                        <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <Link :href="route('shifts.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group"
+                          :class="{ 'bg-gray-100 text-sky-700': $page.component === 'admin/shifts/index' }"
+                    >
+                        <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" :class="{ 'fill-sky-700': $page.component === 'admin/users/index' }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                             <path d="M95.1 0c-53.02 0-96 42.98-96 96c0 18.95 5.671 36.5 15.15 51.38l145.9-121.6C143.9 9.914 121.2 0 95.1 0zM415.1 0c-25.19 0-47.93 9.914-65.06 25.79l145.9 121.6C506.3 132.5 511.1 114.9 511.1 96C511.1 42.98 469 0 415.1 0zM256 64C132.3 64 32 164.3 32 288c0 53.21 18.63 102 49.62 140.4l-42.59 42.59C34.34 475.7 32 481.9 32 488C32 500.8 42.3 512 56 512c6.141 0 12.28-2.344 16.97-7.031l42.59-42.59C153.1 493.4 202.8 512 256 512s102-18.63 140.4-49.62l42.59 42.59C443.7 509.7 449.9 512 456 512c13.71 0 24-11.21 24-24c0-6.141-2.344-12.28-7.031-16.97l-42.59-42.59c30.99-38.43 49.62-87.23 49.62-140.4C479.1 164.3 379.7 64 256 64zM256 464c-97.05 0-176-78.95-176-176S158.1 112 256 112s176 78.95 176 176S353 464 256 464zM280 292V184c0-13.25-10.75-24-24-24S232 170.8 232 184V304c0 7.562 3.563 14.66 9.594 19.19l64 48C309.9 374.4 314.1 376 319.1 376c13.2 0 24.02-10.66 24.02-23.98c0-7.297-3.315-14.5-9.597-19.2L280 292z"/>
                         </svg>
                         <span class="ml-3">Shifts</span>
                     </Link>
                 </li>
                 <li>
-                    <Link href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group">
+                    <Link :href="route('readings.index')" class="flex items-center p-2 text-gray-900 rounded-lg hover:text-sky-700  hover:bg-gray-100 group"
+                          :class="{ 'bg-gray-100 text-sky-700': $page.component === 'admin/reading/index' }"
+                    >
 
-                        <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                        <svg class="h-5 fill-gray-900 group-hover:fill-sky-700" :class="{ 'fill-sky-700': $page.component === 'admin/reading/index' }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                             <path d="M80 256v64c0 17.67 14.33 32 32 32h160c17.67 0 32-14.33 32-32V256c0-17.67-14.33-32-32-32h-160C94.33 224 80 238.3 80 256zM365.3 93.38l-74.63-74.64C278.6 6.742 262.3 0 245.4 0H64C28.65 0 0 28.65 0 64l.0065 384c0 35.34 28.65 64 64 64H320c35.2 0 64-28.8 64-64V138.6C384 121.7 377.3 105.4 365.3 93.38zM336 448c0 8.836-7.164 16-16 16H64.02c-8.838 0-16-7.164-16-16L48 64.13c0-8.836 7.164-16 16-16h160L224 128c0 17.67 14.33 32 32 32h79.1V448zM96 128h80C184.8 128 192 120.8 192 112S184.8 96 176 96H96C87.16 96 80 103.2 80 112S87.16 128 96 128zM96 192h80C184.8 192 192 184.8 192 176S184.8 160 176 160H96C87.16 160 80 167.2 80 176S87.16 192 96 192zM288 384h-80c-8.844 0-16 7.156-16 16s7.156 16 16 16H288c8.844 0 16-7.156 16-16S296.8 384 288 384z"/>
                         </svg>
 
                         <span class="ml-3">Readings</span>
                     </Link>
                 </li>
+                
+                
             </ul>
             <div class="my-5">
                 <ul class="space-y-2 font-medium pt-3 text-sm">

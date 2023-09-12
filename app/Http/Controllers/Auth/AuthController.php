@@ -148,10 +148,10 @@ class AuthController extends Controller
                 return redirect(RouteServiceProvider::ADMIN);
                 break;
             case($role==RoleEnum::Supervisor->value):
-                return redirect(RouteServiceProvider::SUPERVISOR);
+                return redirect(RouteServiceProvider::User);
                 break;
             case($role==RoleEnum::MachineOperator->value):
-                return redirect(RouteServiceProvider::MACHINEOPERATOR);
+                return redirect(RouteServiceProvider::User);
                 break;
             default:
                 return redirect('/');

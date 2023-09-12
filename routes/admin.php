@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminReadingController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminProducts;
 use App\Http\Controllers\Admin\AdminShiftController;
+use App\Http\Controllers\Admin\AdminRolesController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware'=>['auth','verified','update_password','role:Admin']], function (){
@@ -15,5 +16,7 @@ Route::group(['middleware'=>['auth','verified','update_password','role:Admin']],
     Route::resource('admin/products',AdminProducts::class);
     Route::resource('admin/shifts',AdminShiftController::class);
     Route::resource('admin/users',AdminUserController::class,['names' => 'admin.users']);
+    Route::post('admin/roles/permission',[AdminRolesController::class, 'permission'])->name('admin.roles.permission');
+    Route::resource('admin/roles',AdminRolesController::class,['names' => 'admin.roles']);
     Route::resource('admin',AdminController::class);
 });

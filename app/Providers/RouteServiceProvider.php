@@ -19,8 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/';
     public const ADMIN = '/admin';
-    public const SUPERVISOR = '/supervisor';
-    public const MACHINEOPERATOR = '/machine-operator';
+    public const USER = '/user';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
