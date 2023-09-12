@@ -108,7 +108,6 @@ watch([search,showing,shift, machine],()=>{
         <h6 class="font-semibold">Export Data:</h6>
         <a :href="route('admin.readings.report','pdf')" class="text-sky-700 font-bold">PDF</a>
         <a :href="route('admin.readings.report','excel')" class="text-sky-700 font-bold">CSV</a>
-        <button class="text-sky-700 font-bold">JSON</button>
     </div>
     <div class="border rounded-xl shadow-sm overflow-hidden">
         <div>
