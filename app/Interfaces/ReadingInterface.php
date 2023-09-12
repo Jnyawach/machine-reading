@@ -12,6 +12,7 @@ interface ReadingInterface
     public function deleteReading(string $id);
 
     public function markConfirmed(string $id);
+    public function getWeeklyReading();
 
 
 }
