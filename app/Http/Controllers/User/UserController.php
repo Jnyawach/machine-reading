@@ -3,15 +3,23 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\ReadingInterface;
+use App\Models\Machine;
+use App\Models\Product;
+use App\Models\Reading;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Enums\RoleEnum;
 
 class UserController extends Controller
 {
-    public function __construct()
+    private ReadingInterface $readingRepository;
+    public function __construct(ReadingInterface $readingRepository)
     {
         $this->middleware(['role:'.RoleEnum::Supervisor->value]);
+        $this->readingRepository=$readingRepository;
     }
     /**
      * Display a listing of the resource.
@@ -19,7 +27,20 @@ class UserController extends Controller
     public function index()
     {
         //
-        return inertia::render('user/index');
+
+        $readings=Reading::where('user_id',Auth::id())->count();
+        $machines=Machine::count();
+        $products=Product::count();
+        $weeklyReadings=$this->readingRepository->getMyWeeklyReading(Auth::id());
+
+        return inertia::render('user/index',
+            [
+                'readings'=>$readings,
+                'machines'=>$machines,
+                'products'=>$products,
+                'weeklyReadings'=>$weeklyReadings,
+            ]);
+
     }
 
     /**

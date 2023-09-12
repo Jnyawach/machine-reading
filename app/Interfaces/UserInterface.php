@@ -10,4 +10,5 @@ interface UserInterface
     public function createUser($data);
     public function updateUser($id, $data);
     public function getUserTypes($type);
+    public function getMyWeeklyReading($id);
 }

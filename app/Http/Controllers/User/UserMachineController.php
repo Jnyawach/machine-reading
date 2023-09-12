@@ -92,10 +92,10 @@ class UserMachineController extends Controller
         ]);
 
         $machine=$this->machineRepository->updateMachine($validated,$id);
-        if ($machine['status']==200) {
-            return redirect()->back()->with('success', $machine['message']);
+        if ($machine->status()==200) {
+            return redirect()->back()->with('success', 'Machine updated successfully');
         } else {
-            return redirect()->back()->with('status', $machine['message']);
+            return redirect()->back()->with('status', 'Machine update failed');
         }
     }
 

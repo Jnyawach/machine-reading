@@ -62,7 +62,7 @@ class UserProductsController extends Controller
         ]);
         $product=$this->productRepository->createProduct($validated);
         if ($product->status()==200){
-            return redirect()->route('products.index')->with('success','Product created successfully');
+            return redirect()->route('user.products.index')->with('success','Product created successfully');
         }else{
             return redirect()->back()->with('status','Product could not be created');
         }
@@ -107,7 +107,7 @@ class UserProductsController extends Controller
 
         $product=$this->productRepository->updateProduct($validated,$id);
         if ($product->status()==200){
-            return redirect()->route('products.index')->with('success','Product updated successfully');
+            return redirect()->route('user.products.index')->with('success','Product updated successfully');
         }else{
             return redirect()->back()->with('status','Product could not be updated');
         }
@@ -121,7 +121,7 @@ class UserProductsController extends Controller
         //
         $product=$this->productRepository->deleteProduct($id);
         if ($product->status()==200){
-            return redirect()->route('products.index')->with('success','Product deleted successfully');
+            return redirect()->route('user.products.index')->with('success','Product deleted successfully');
         }else{
             return redirect()->back()->with('error','Product could not be deleted');
         }

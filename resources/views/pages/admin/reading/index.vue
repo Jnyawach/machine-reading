@@ -50,7 +50,7 @@ watch([search,showing,shift, machine],()=>{
             <h1 class="text-2xl font-bold">Readings</h1>
         </div>
         <div>
-            <add-reading>
+            <add-reading :link="route('readings.store')">
                 <template #trigger>
                     <button class="btn-simple btn-medium flex items-center gap-2">
 

@@ -122,13 +122,14 @@ import {watch, ref, onMounted, computed} from "vue";
 import {useForm, usePage} from "@inertiajs/vue3";
 import axios from "axios";
 import moment from "moment";
-
-
-
 const show=ref(false)
 const products=ref([])
 const shifts=ref([])
 const machines=ref([])
+
+let props=defineProps({
+    link:String
+})
 
 watch(show,(val)=>{
     if(val){
@@ -150,7 +151,7 @@ let form=useForm({
 })
 
 const submit = () => {
-    form.post(route('readings.store'),{
+    form.post(props.link,{
         preserveScroll:true,
         onSuccess:()=>{
             show.value=false
