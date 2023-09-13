@@ -169,7 +169,7 @@ watch([search,showing,shift, machine],()=>{
                         </td>
 
                         <td class="px-2 py-3 flex justify-end">
-                            <button v-if="reading.confirm_status==='Pending'" class="btn-simple btn-medium" @click="markConfirmed(reading.id)">Mark confirmed</button>
+                            <button v-if="reading.confirm_status==='Pending'" class="btn-simple btn-medium" @click="markConfirmed(reading.id)">Confirm</button>
                         </td>
                     </tr>
                     </tbody>

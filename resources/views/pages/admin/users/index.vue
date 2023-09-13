@@ -121,7 +121,7 @@ watch([search,showing],()=>{
                         <th scope="row" class="px-2 py-3 font-semibold whitespace-nowrap">
                             {{user.name}}
                         </th>
-                        <td class="px-2 py-3 capitalize">
+                        <td class="px-2 py-3">
                             {{user.email}}
                         </td>
                         <td class="px-2 py-3">
