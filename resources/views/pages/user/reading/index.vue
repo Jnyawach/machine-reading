@@ -132,7 +132,7 @@ watch([search,showing,shift, machine],()=>{
                         <th scope="col" class="px-2 py-3">
                            Confirmation status
                         </th>
-                        <th scope="col" class="px-2 py-3 text-end">
+                        <th scope="col" class="px-2 py-3 text-end" v-if="$page.props.auth==='Supervisor'">
                             Action
                         </th>
                     </tr>
@@ -168,7 +168,7 @@ watch([search,showing,shift, machine],()=>{
 
                         </td>
 
-                        <td class="px-2 py-3 flex justify-end">
+                        <td class="px-2 py-3 flex justify-end" v-if="$page.props.auth==='Supervisor'">
                             <button v-if="reading.confirm_status==='Pending'" class="btn-simple btn-medium" @click="markConfirmed(reading.id)">Confirm</button>
                         </td>
                     </tr>
