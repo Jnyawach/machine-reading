@@ -14,8 +14,8 @@
             </div>
             <div class="ml-3 text-sm font-normal text-red-600" v-if="$page.props.status">{{$page.props.status }}</div>
             <div class="ml-3 text-sm font-normal text-green-600" v-if="$page.props.success">{{$page.props.success}}</div>
-            <button @click="show=false" type="button" class="ml-auto  bg-white text-gray-400 hover:text-gray-900 rounded-full focus:ring-2 focus:ring-gray-300 hover:bg-gray-100 inline-flex place-content-center h-8 w-8 p-1">
-                <span class="self-center"><i class="fal fa-times"></i></span>
+            <button @click="show=false" type="button" class="ml-auto  bg-gray-50  hover:text-gray-900 rounded-full focus:ring-2 focus:ring-gray-300 hover:bg-gray-100 inline-flex place-content-center h-8 w-8 p-1">
+                <svg class="h-5 fill-sky-700 self-center" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M312.1 375c9.369 9.369 9.369 24.57 0 33.94s-24.57 9.369-33.94 0L160 289.9l-119 119c-9.369 9.369-24.57 9.369-33.94 0s-9.369-24.57 0-33.94L126.1 256L7.027 136.1c-9.369-9.369-9.369-24.57 0-33.94s24.57-9.369 33.94 0L160 222.1l119-119c9.369-9.369 24.57-9.369 33.94 0s9.369 24.57 0 33.94L193.9 256L312.1 375z"/></svg>
             </button>
         </div>
     </TransitionGroup>

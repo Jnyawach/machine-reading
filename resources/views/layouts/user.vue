@@ -2,6 +2,7 @@
 import {onMounted} from "vue";
 import { initFlowbite } from 'flowbite'
 import {Link,useForm} from "@inertiajs/vue3";
+import Toast from "@/views/components/general-components/toast.vue";
 
 onMounted(() => {
     initFlowbite();
@@ -18,7 +19,9 @@ const logout=()=>{
 </script>
 
 <template>
-
+    <Teleport to="body">
+        <toast></toast>
+    </Teleport>
     <div class="sm:hidden flex justify-between gap-2 z-[100000] p-2 w-full bg-white shadow">
         <div>
             <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button">

@@ -117,7 +117,10 @@ const deleteProduct=(id:number)=>{
                     <thead class="text-xs text-sky-700 uppercase bg-sky-50">
                     <tr>
                         <th scope="col" class="px-2 py-3">
-                            Machine name
+                            Sku
+                        </th>
+                        <th scope="col" class="px-2 py-3">
+                            Product name
                         </th>
                         <th scope="col" class="px-2 py-3">
                             Weight
@@ -138,9 +141,12 @@ const deleteProduct=(id:number)=>{
                     </thead>
                     <tbody class="[&>*:nth-child(even)]:bg-gray-100">
                     <tr class="border-b" v-for="product in products.data" :key="product.id" >
-                        <th scope="row" class="px-2 py-3 font-semibold whitespace-nowrap">
+                        <td  class="px-2 py-3">
+                            {{product.product_sku}}
+                        </td>
+                        <td  class="px-2 py-3">
                             {{product.name}}
-                        </th>
+                        </td>
                         <td class="px-2 py-3">
                             {{product.product_weight}}
 

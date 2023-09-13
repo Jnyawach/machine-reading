@@ -48,15 +48,22 @@ let form=useForm({
                             </div>
                         </div>
                         <div>
-                            <label for="product_weight" class="text-sm font-medium text-gray-700">Product weight</label>
-                            <select class="sumo-input my-2" v-model="form.product_weight" id="product_weight">
-                                <option value="">Select weight</option>
-                                <option :value="product_weight.id" :key="product_weight.id" v-for="product_weight in product_weights">{{product_weight.weight}} {{product_weight.measurement_unit}}</option>
-
-                            </select>
-                            <div class="sumo-error" v-if="form.errors.product_weight">
-                                {{ form.errors.product_weight }}
+                            <label for="product_sku" class="text-sm font-medium text-gray-700">Product sku</label>
+                            <input v-model="form.product_sku" placeholder="Enter product sku" type="text" id="product_sku"  class="sumo-input my-2">
+                            <div class="sumo-error" v-if="form.errors.product_sku">
+                                {{ form.errors.product_sku }}
                             </div>
+                        </div>
+                    </div>
+                    <div class="my-5 grid">
+                        <label for="product_weight" class="text-sm font-medium text-gray-700">Product weight</label>
+                        <select class="sumo-input my-2" v-model="form.product_weight" id="product_weight">
+                            <option value="">Select weight</option>
+                            <option :value="product_weight.id" :key="product_weight.id" v-for="product_weight in product_weights">{{product_weight.weight}} {{product_weight.measurement_unit}}</option>
+
+                        </select>
+                        <div class="sumo-error" v-if="form.errors.product_weight">
+                            {{ form.errors.product_weight }}
                         </div>
                     </div>
                     <div class="grid my-5">
