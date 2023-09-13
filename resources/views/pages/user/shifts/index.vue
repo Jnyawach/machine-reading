@@ -83,8 +83,35 @@ const deleteShift=(id:number)=>{
                 </div>
             </div>
         </div>
-
-        <!--machine table-->
+        <div>
+            <div class="flex justify-between my-5">
+                <div class="flex gap-2">
+                    <h6 class="self-center">Showing Entries:</h6>
+                    <select v-model="showing" class="font-medium text-xs  rounded-xl border bg-gray-50 border border-gray-300 text-gray-900 focus:ring-sky-600 focus:border-sky-600 block h-9 p-2  self-center">
+                        <option value="10">10</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+                <div class="flex justify-end gap-3 self-center">
+                    <div class="flex gap-2">
+                        <h6 class="self-center">Search:</h6>
+                        <input  placeholder="Search by name" type="search" class="small-input" v-model="search">
+                    </div>
+                    <div class="flex gap-2" v-if="search">
+                        <button @click="clearFilter" class="btn-secondary btn-small">
+                            <span>Clear</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-end gap-3 self-center my-3">
+                <h6 class="font-semibold">Export Data:</h6>
+                <a :href="route('user.shifts.report','pdf')" class="text-sky-700 font-bold">PDF</a>
+                <a :href="route('user.shifts.report','excel')" class="text-sky-700 font-bold">CSV</a>
+            </div>
+        </div>
+        <!--table-->
         <div class="border rounded-xl overflow-hidden shadow-sm">
             <div>
                 <div class="relative">

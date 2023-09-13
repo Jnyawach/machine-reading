@@ -8,6 +8,7 @@ use App\Models\Machine;
 use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\ProductWeight;
+use App\Models\Reports;
 use App\Models\Shift;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
@@ -134,5 +135,16 @@ class UserProductsController extends Controller
         $shifts=Shift::all();
         $machines=Machine::select('id','name')->get();
         return response()->json(['products'=>$products,'shifts'=>$shifts,'machines'=>$machines],200);
+    }
+
+    public function report($format)
+    {
+        $products=$this->productRepository->getProducts();
+
+        $fileName="Products";
+        $data=[
+            'products'=>$products,
+        ];
+        return Reports::generate($format,'reports.products',$data,$fileName);
     }
 }

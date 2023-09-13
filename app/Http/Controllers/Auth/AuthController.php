@@ -60,7 +60,7 @@ class AuthController extends Controller
 
         //confirm this user has at least one role
         $auth_user=User::where('email',$request->email)->first();
-        if(count($auth_user->getRoleNames())<1){
+        if(!$auth_user || count($auth_user->getRoleNames())<1){
             request()->session()->flash('status','Access Denied. Contact Management.');
             return back();
         }

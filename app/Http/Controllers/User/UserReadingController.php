@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Machine;
 use App\Models\Product;
+use App\Models\Reports;
 use App\Models\Shift;
 use App\Repositories\ReadingRepository;
 use Illuminate\Http\Request;
@@ -109,5 +110,16 @@ class UserReadingController extends Controller
         }else{
             return redirect()->back()->with('status','Error confirming a reading');
         }
+    }
+
+    public function report($format)
+    {
+        $readings=$this->readingRepository->getMyReadings(Auth::id());
+
+        $fileName="Readings";
+        $data=[
+            'readings'=>$readings,
+        ];
+        return Reports::generate($format,'reports.readings',$data,$fileName);
     }
 }
