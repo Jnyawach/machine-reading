@@ -52,15 +52,18 @@ class DemoDataSeeder extends Seeder
                 'products'=>[
                     [
                       'name'=> 'Baba lao all purpose',
-                        'product_weight_id'=>1
+                        'product_weight_id'=>1,
+                        'product_sku'=>'DGRT46'
                     ],
                     [
                         'name'=> 'Baba lao all purpose',
-                        'product_weight_id'=>2
+                        'product_weight_id'=>2,
+                        'product_sku'=>'DGRT465'
                     ],
                     [
                         'name'=> 'Baba lao all purpose',
-                        'product_weight_id'=>3
+                        'product_weight_id'=>3,
+                        'product_sku'=>'DGRT56'
                     ]
                 ]
 
@@ -71,11 +74,13 @@ class DemoDataSeeder extends Seeder
                 'products'=>[
                     [
                         'name'=> 'Baba lao maize',
-                        'product_weight_id'=>1
+                        'product_weight_id'=>1,
+                        'product_sku'=>'DGRT36'
                     ],
                     [
                         'name'=> 'Baba lao all maize',
-                        'product_weight_id'=>2
+                        'product_weight_id'=>2,
+                        'product_sku'=>'DGRT466'
                     ],
 
                 ]
@@ -121,7 +126,8 @@ class DemoDataSeeder extends Seeder
                     'product_weight_id'=>$product['product_weight_id'],
                     'user_id'=>$user->id,
                     'status'=>StatusEnum::Enabled->value,
-                    'product_type_id'=>$newType->id
+                    'product_type_id'=>$newType->id,
+                    'product_sku'=>$product['product_sku']
                 ]);
             }
         }

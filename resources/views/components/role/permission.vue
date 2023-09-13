@@ -21,9 +21,8 @@
                             </div>
                             <div>
                                 <div class="text-end">
-                                    <button type="button" @click="show=false" class="rounded-full bg-sumo-300 h-8 w-8">
-                                    <span class="text-white text-lg">
-                                        <i class="fal fa-times"></i></span>
+                                    <button type="button" @click="show=false" class="rounded-full bg-sky-700 h-7 w-7 flex place-content-center">
+                                        <svg class="h-5 fill-white self-center" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M312.1 375c9.369 9.369 9.369 24.57 0 33.94s-24.57 9.369-33.94 0L160 289.9l-119 119c-9.369 9.369-24.57 9.369-33.94 0s-9.369-24.57 0-33.94L126.1 256L7.027 136.1c-9.369-9.369-9.369-24.57 0-33.94s24.57-9.369 33.94 0L160 222.1l119-119c9.369-9.369 24.57-9.369 33.94 0s9.369 24.57 0 33.94L193.9 256L312.1 375z"/></svg>
                                     </button>
                                 </div>
                             </div>
@@ -33,28 +32,28 @@
                         <form @submit.prevent="submit">
                             <div class="grid grid-cols-1 gap-1 my-5">
                                 <div>
-                                    <input type="checkbox" class="m-3 " id="products" v-model="form.products">
+                                    <input type="checkbox" class="m-3 sumo-check" id="products" v-model="form.products">
                                     <label class="sumo-label" for="products">Products</label>
                                     <div v-if="form.errors.products" class="mt-3 text-red-800 text-sm">
                                         <span class="text-xs">{{form.errors.products }}</span>
                                     </div>
                                 </div>
                                 <div>
-                                    <input type="checkbox" class="m-3 " id="machine" v-model="form.machine">
+                                    <input type="checkbox" class="m-3 sumo-check" id="machine" v-model="form.machine">
                                     <label class="sumo-label" for="machine">Machine</label>
                                     <div v-if="form.errors.machine" class="mt-3 text-red-800 text-sm">
                                         <span class="text-xs">{{form.errors.machine }}</span>
                                     </div>
                                 </div>
                                 <div>
-                                    <input type="checkbox" class="m-3 " id="shifts" v-model="form.shifts">
+                                    <input type="checkbox" class="m-3 sumo-check" id="shifts" v-model="form.shifts">
                                     <label class="sumo-label" for="shifts">Shifts</label>
                                     <div v-if="form.errors.shifts" class="mt-3 text-red-800 text-sm">
                                         <span class="text-xs">{{form.errors.shifts }}</span>
                                     </div>
                                 </div>
                                 <div>
-                                    <input type="checkbox" class="m-3 " id="reading" v-model="form.reading">
+                                    <input type="checkbox" class="m-3 sumo-check" id="reading" v-model="form.reading">
                                     <label class="sumo-label" for="reading">Reading</label>
                                     <div v-if="form.errors.reading" class="mt-3 text-red-800 text-sm">
                                         <span class="text-xs">{{form.errors.reading }}</span>
@@ -90,9 +89,24 @@ let form=useForm({
     'shifts': '',
     'reading': '',
 })
+const perms=()=>{
+    props.permissions.forEach((score) => {
+        if(score.name == 'products'){
+            form.products=true
+        }
+        if(score.name == 'machine'){
+            form.machine=true
+        }
+        if(score.name == 'shifts'){
+            form.shifts=true
+        }
+        if(score.name == 'reading'){
+            form.reading=true
+        }
+    });
+}
 const launchForm=()=>{
-    console.log(props);
-    
+    perms();
     form.role=props.role?.name
     show.value=true
 }

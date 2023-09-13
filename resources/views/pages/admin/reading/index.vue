@@ -50,7 +50,7 @@ watch([search,showing,shift, machine],()=>{
             <h1 class="text-2xl font-bold">Readings</h1>
         </div>
         <div>
-            <add-reading>
+            <add-reading :link="route('readings.store')">
                 <template #trigger>
                     <button class="btn-simple btn-medium flex items-center gap-2">
 
@@ -108,7 +108,6 @@ watch([search,showing,shift, machine],()=>{
         <h6 class="font-semibold">Export Data:</h6>
         <a :href="route('admin.readings.report','pdf')" class="text-sky-700 font-bold">PDF</a>
         <a :href="route('admin.readings.report','excel')" class="text-sky-700 font-bold">CSV</a>
-        <button class="text-sky-700 font-bold">JSON</button>
     </div>
     <div class="border rounded-xl shadow-sm overflow-hidden">
         <div>
@@ -174,7 +173,7 @@ watch([search,showing,shift, machine],()=>{
                         </td>
 
                         <td class="px-2 py-3 flex justify-end">
-                            <button v-if="reading.confirm_status==='Pending'" class="btn-simple btn-medium" @click="markConfirmed(reading.id)">Mark confirmed</button>
+                            <button v-if="reading.confirm_status==='Pending'" class="btn-simple btn-medium" @click="markConfirmed(reading.id)">Confirm</button>
                         </td>
                     </tr>
                     </tbody>

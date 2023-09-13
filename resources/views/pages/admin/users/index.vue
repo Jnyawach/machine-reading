@@ -93,9 +93,8 @@ watch([search,showing],()=>{
     </div>
       <div class="flex justify-end gap-3 self-center my-3">
           <h6 class="font-semibold">Export Data:</h6>
-          <button class="text-sky-700 font-bold">PDF</button>
-          <button class="text-sky-700 font-bold">CSV</button>
-          <button class="text-sky-700 font-bold">JSON</button>
+          <a :href="route('admin.users.report','pdf')" class="text-sky-700 font-bold">PDF</a>
+          <a :href="route('admin.users.report','excel')" class="text-sky-700 font-bold">CSV</a>
       </div>
     <div class="border rounded-xl overflow-hidden shadow-sm">
         <div>
@@ -122,7 +121,7 @@ watch([search,showing],()=>{
                         <th scope="row" class="px-2 py-3 font-semibold whitespace-nowrap">
                             {{user.name}}
                         </th>
-                        <td class="px-2 py-3 capitalize">
+                        <td class="px-2 py-3">
                             {{user.email}}
                         </td>
                         <td class="px-2 py-3">

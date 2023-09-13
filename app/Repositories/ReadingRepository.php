@@ -64,10 +64,13 @@ class ReadingRepository implements ReadingInterface
             $reading=Reading::latest()->first();
             $automatic_count=$data['reading_entry'];
 
+
             if($reading){
                 $automatic_count=$data['reading_entry']-$reading->reading_entry;
+                
             }
             $reading_count=$automatic_count/$product->productWeight->packaging_quantity;
+
             $reading=Reading::create([
                 'product_id'=>$data['product_id'],
                 'shift_id'=>$data['shift'],
@@ -141,6 +144,23 @@ class ReadingRepository implements ReadingInterface
         $days = CarbonPeriod::create(now()->subDays(6), now());
         foreach ($days as $day) {
             $reading=Reading::where('created_at','like',$day->format('Y-m-d').'%')->count();
+            $data['days'][]=$day->format('d');
+            $data['datasets'][]=$reading;
+        }
+        return $data;
+    }
+
+    public function getMyWeeklyReading($id){
+        $data=[
+            'days'=>[],
+            'datasets'=>[
+
+            ]
+        ];
+
+        $days = CarbonPeriod::create(now()->subDays(6), now());
+        foreach ($days as $day) {
+            $reading=Reading::where('user_id',$id)->where('created_at','like',$day->format('Y-m-d').'%')->count();
             $data['days'][]=$day->format('d');
             $data['datasets'][]=$reading;
         }

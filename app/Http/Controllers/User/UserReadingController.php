@@ -64,7 +64,7 @@ class UserReadingController extends Controller
 
         $reading=$this->readingRepository->createReading($validated);
         if($reading->status()==200){
-            return redirect()->route('readings.index')->with('success','Reading added successfully');
+            return redirect()->back()->with('success','Reading added successfully');
         }else{
             return redirect()->back()->with('status','Error adding a reading');
         }
@@ -105,7 +105,7 @@ class UserReadingController extends Controller
     public function markConfirmed($id){
         $reading=$this->readingRepository->markConfirmed($id);
         if($reading->status()==200){
-            return redirect()->route('readings.index')->with('success','Reading confirmed successfully');
+            return redirect()->route('user.readings.index')->with('success','Reading confirmed successfully');
         }else{
             return redirect()->back()->with('status','Error confirming a reading');
         }

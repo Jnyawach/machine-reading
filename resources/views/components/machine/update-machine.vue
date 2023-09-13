@@ -87,7 +87,8 @@ import {useForm} from "@inertiajs/vue3";
 let props=defineProps({
     machine:Object,
     statuses:Object,
-    product_types:Object
+    product_types:Object,
+    link:String
 })
 
 const show=ref(false)
@@ -111,7 +112,7 @@ let form=useForm({
 })
 
 const submit = () => {
-    form.post(route('machines.update',props.machine?.id),{
+    form.post(props.link,{
         preserveScroll:true,
         onSuccess:()=>{
             show.value=false

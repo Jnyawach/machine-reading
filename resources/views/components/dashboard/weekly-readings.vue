@@ -23,7 +23,7 @@ const series=[{
 <div class="border rounded-xl p-3 bg-white">
     <div class="flex justify-between">
         <h2 class="text-lg font-bold text-sky-700">Weekly readings</h2>
-        <Link title="Readings" :href="route('readings.index')" class="btn-outline-primary btn-small">
+        <Link title="Readings" :href="route('user.readings.index')" class="btn-outline-primary btn-small">
             View all
         </Link>
     </div>

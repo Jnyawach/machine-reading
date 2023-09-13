@@ -154,6 +154,11 @@ class AuthenticatedUser extends Controller
         return inertia::render('auth/profile',compact('user'));
     }
 
+    public function editUserProfile(){
+        $user = Auth::user();
+        return inertia::render('auth/user-profile',compact('user'));
+    }
+
     public function updateProfile(Request $request)
     {
         $request->validate([

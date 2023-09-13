@@ -25,7 +25,7 @@ class Product extends Model
     }
 
     protected $fillable=[
-        'name','product_weight_id', 'product_type_id','status','user_id','description'
+        'name','product_weight_id', 'product_type_id','status','user_id','description','product_sku'
     ];
 
     public function productWeight(){

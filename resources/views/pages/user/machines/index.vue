@@ -49,7 +49,7 @@ const deleteMachine=(id:number)=>{
         <h1 class="text-2xl font-bold">Machines</h1>
     </div>
     <div>
-        <create-machine :statuses="statuses" :product_types="product_types">
+        <create-machine :statuses="statuses" :product_types="product_types" :link="route('user.machines.store')">
             <template #trigger>
                 <button class="btn-simple btn-medium flex items-center gap-2">
 
@@ -127,7 +127,8 @@ const deleteMachine=(id:number)=>{
                             {{machine.status}}
                         </td>
                         <td class="px-2 py-3">
-                            <update-machine :machine="machine" :statuses="statuses" :product_types="product_types">
+                            <update-machine :machine="machine" :statuses="statuses" :product_types="product_types"
+                                            :link="route('user.machines.update',machine.id)">
                                 <template #trigger>
                                     <button class="text-green-600">Update</button>
                                 </template>

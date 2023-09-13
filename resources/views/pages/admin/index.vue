@@ -39,7 +39,7 @@ defineProps({
 
       <div class="p-3 border bg-white rounded-xl">
           <div class="flex justify-between ">
-              <h6 class="text-md font-bold">Users</h6>
+              <h6 class="text-md font-bold">Products</h6>
               <Link :href="route('products.index')" title="Portfolios" class="btn-outline-primary btn-small">View all</Link>
           </div>
           <div class="pt-5">

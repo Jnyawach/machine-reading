@@ -22,7 +22,8 @@ class ProductResource extends JsonResource
             'product_weight'=>$this->productWeight->weight.' Kgs',
             'description'=>$this->description,
             'status'=>$this->status,
-            'bale'=>$this->productWeight->packaging_quantity
+            'bale'=>$this->productWeight->packaging_quantity,
+            'product_sku'=>$this->product_sku
 
         ];
     }

@@ -31,7 +31,7 @@ const clearFilter=()=>{
 }
 
 watch([search,showing,shift, machine],()=>{
-    router.get(route('user.readings.index'),{
+    router.get(route('user.mark.reading.confirmed'),{
         search: search.value,
         showing: showing.value,
         shift:shift.value ,
@@ -50,7 +50,7 @@ watch([search,showing,shift, machine],()=>{
             <h1 class="text-2xl font-bold">Readings</h1>
         </div>
         <div>
-            <add-reading>
+            <add-reading :link="route('user.readings.store')">
                 <template #trigger>
                     <button class="btn-simple btn-medium flex items-center gap-2">
 
@@ -104,12 +104,7 @@ watch([search,showing,shift, machine],()=>{
                 </div>
             </div>
         </div>
-    <div class="flex justify-end gap-3 self-center my-3">
-        <h6 class="font-semibold">Export Data:</h6>
-        <button class="text-sky-700 font-bold">PDF</button>
-        <button class="text-sky-700 font-bold">CSV</button>
-        <button class="text-sky-700 font-bold">JSON</button>
-    </div>
+
     <div class="border rounded-xl shadow-sm overflow-hidden">
         <div>
             <div class="relative">
@@ -174,7 +169,7 @@ watch([search,showing,shift, machine],()=>{
                         </td>
 
                         <td class="px-2 py-3 flex justify-end">
-                            <button v-if="reading.confirm_status==='Pending'" class="btn-simple btn-medium" @click="markConfirmed(reading.id)">Mark confirmed</button>
+                            <button v-if="reading.confirm_status==='Pending'" class="btn-simple btn-medium" @click="markConfirmed(reading.id)">Confirm</button>
                         </td>
                     </tr>
                     </tbody>

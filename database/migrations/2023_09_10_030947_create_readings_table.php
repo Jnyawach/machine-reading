@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('confirm_by_id')->nullable();
             $table->integer('reading_entry');
-            $table->decimal('automatic_count',10,2);
+            $table->integer('automatic_count');
             $table->decimal('reading_count',10,2);
             $table->unsignedBigInteger('machine_id');
             $table->string('confirm_status')->default(\App\Enums\ConfirmStatusEnum::Pending->value);

@@ -59,10 +59,11 @@ class UserProductsController extends Controller
             'product_type'=>'required|integer|exists:product_types,id',
             'product_weight'=>'required|integer|exists:product_weights,id',
             'user_id'=>'required|integer|exists:users,id',
+            'product_sku'=>'required|unique:products,product_sku',
         ]);
         $product=$this->productRepository->createProduct($validated);
         if ($product->status()==200){
-            return redirect()->route('products.index')->with('success','Product created successfully');
+            return redirect()->route('user.products.index')->with('success','Product created successfully');
         }else{
             return redirect()->back()->with('status','Product could not be created');
         }
@@ -102,12 +103,13 @@ class UserProductsController extends Controller
             'description'=>'nullable|string',
             'product_type'=>'required|integer|exists:product_types,id',
             'product_weight'=>'required|integer|exists:product_weights,id',
+            'product_sku'=>'required|unique:products,product_sku,'.$id,
 
         ]);
 
         $product=$this->productRepository->updateProduct($validated,$id);
         if ($product->status()==200){
-            return redirect()->route('products.index')->with('success','Product updated successfully');
+            return redirect()->route('user.products.index')->with('success','Product updated successfully');
         }else{
             return redirect()->back()->with('status','Product could not be updated');
         }
@@ -121,7 +123,7 @@ class UserProductsController extends Controller
         //
         $product=$this->productRepository->deleteProduct($id);
         if ($product->status()==200){
-            return redirect()->route('products.index')->with('success','Product deleted successfully');
+            return redirect()->route('user.products.index')->with('success','Product deleted successfully');
         }else{
             return redirect()->back()->with('error','Product could not be deleted');
         }
