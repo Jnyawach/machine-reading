@@ -40,6 +40,7 @@ class ProductRepository implements ProductInterface
                 'product_type_id'=>$attributes['product_type'],
                 'product_weight_id'=>$attributes['product_weight'],
                 'user_id'=>$attributes['user_id'],
+                'product_sku'=>$attributes['product_sku']
 
             ]);
             return response()->json(['message'=>'Product created successfully','product'=>$product],200);
@@ -58,7 +59,7 @@ class ProductRepository implements ProductInterface
                     'description'=>$data['description'],
                     'product_type_id'=>$data['product_type'],
                     'product_weight_id'=>$data['product_weight'],
-
+                    'product_sku'=>$data['product_sku']
                 ]
             );
             return response()->json(['message'=>'Product updated successfully','product'=>$product],200);

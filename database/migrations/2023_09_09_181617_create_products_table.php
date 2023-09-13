@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('status')->default(\App\Enums\StatusEnum::Enabled->value);
             $table->string('name',125);
             $table->string('slug',125);
+            $table->string('product_sku',125);
             $table->mediumText('description')->nullable();
             $table->unsignedBigInteger('product_type_id')->index();
             $table->unsignedBigInteger('product_weight_id')->index();

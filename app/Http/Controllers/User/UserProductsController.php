@@ -60,6 +60,7 @@ class UserProductsController extends Controller
             'product_type'=>'required|integer|exists:product_types,id',
             'product_weight'=>'required|integer|exists:product_weights,id',
             'user_id'=>'required|integer|exists:users,id',
+            'product_sku'=>'required|unique:products,product_sku',
         ]);
         $product=$this->productRepository->createProduct($validated);
         if ($product->status()==200){
@@ -103,6 +104,7 @@ class UserProductsController extends Controller
             'description'=>'nullable|string',
             'product_type'=>'required|integer|exists:product_types,id',
             'product_weight'=>'required|integer|exists:product_weights,id',
+            'product_sku'=>'required|unique:products,product_sku,'.$id,
 
         ]);
 
